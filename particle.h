@@ -17,14 +17,14 @@ protected:
   double rest_mass{0};
   std::unique_ptr<FourMomentum> four_momentum = std::make_unique<FourMomentum>(0,0,0,0);
   bool antiparticle{false};
-  bool print_constructor_destructor{true}; 
+  bool print_constructor_destructor{false}; 
 
 public:
   // Default constructor
   Particle() {if(print_constructor_destructor) {std::cout<<"Default particle constructor called"<<std::endl;}}
   // Parameterised constructor
-  Particle(double particle_energy, double particle_px,
-           double particle_py, double particle_pz, bool antiparticle_status);
+  Particle(double particle_energy, double particle_px, double particle_py, double particle_pz, bool antiparticle_status,
+           bool constructor_destructor_status);
   // Destructor
   virtual ~Particle() {if(print_constructor_destructor) {std::cout<<"Particle destructor called"<<std::endl;}}
   // Copy constructor
@@ -47,6 +47,7 @@ public:
   void set_antiparticle_status(bool antiparticle_status) {antiparticle = antiparticle_status;}
   void set_print_constructor_destructor_status(bool print_constructor_destructor_status) {print_constructor_destructor = print_constructor_destructor_status;}
   
+  void check_four_momentum();
   virtual void print_data();
 };
 

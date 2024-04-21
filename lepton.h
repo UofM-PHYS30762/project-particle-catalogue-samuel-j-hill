@@ -18,8 +18,8 @@ public:
   // Default constructor
   Lepton() {if(print_constructor_destructor) {std::cout<<"Default lepton constructor called"<<std::endl;}};
   // Parameterised constructor
-  Lepton(double lepton_energy, double lepton_px,
-           double lepton_py, double lepton_pz, bool antiparticle);
+  Lepton(double lepton_energy, double lepton_px, double lepton_py, double lepton_pz, bool antiparticle, 
+         bool constructor_destructor_status);
   // Destructor
   virtual ~Lepton() {if(print_constructor_destructor) {std::cout<<"Lepton destructor called"<<std::endl;}}
 
