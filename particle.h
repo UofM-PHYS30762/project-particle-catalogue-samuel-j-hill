@@ -17,13 +17,13 @@ protected:
   double rest_mass{0};
   std::unique_ptr<FourMomentum> four_momentum = std::make_unique<FourMomentum>(0,0,0,0);
   bool antiparticle{false};
-  bool print_constructor_destructor{false}; 
+  bool print_constructor_destructor{true}; 
 
 public:
   // Default constructor
-  Particle() {if(print_constructor_destructor) {std::cout<<"Default particle constructor called"<<std::endl;}};
+  Particle() {if(print_constructor_destructor) {std::cout<<"Default particle constructor called"<<std::endl;}}
   // Parameterised constructor
-  Particle(int particle_charge, double particle_spin, double particle_energy, double particle_px,
+  Particle(double particle_energy, double particle_px,
            double particle_py, double particle_pz, bool antiparticle_status);
   // Destructor
   virtual ~Particle() {if(print_constructor_destructor) {std::cout<<"Particle destructor called"<<std::endl;}}

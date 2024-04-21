@@ -4,7 +4,7 @@
 #include "four_momentum.h"
 
 // Parameterised constructor
-Particle::Particle(int particle_charge, double particle_spin, double particle_energy, double particle_px, double particle_py,
+Particle::Particle(double particle_energy, double particle_px, double particle_py,
                    double particle_pz, bool antiparticle_status)
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised particle constructor called"<<std::endl;}
@@ -13,8 +13,6 @@ Particle::Particle(int particle_charge, double particle_spin, double particle_en
   {
     throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
   }
-  charge = particle_charge;
-  spin = particle_spin;
   antiparticle = antiparticle_status;
 }
 
