@@ -3,9 +3,14 @@
 #include "particle.h"
 #include "lepton.h"
 #include "muon.h"
+#include "neutrino.h"
 
 int main()
 {
-
-  return 0;
+  /*
+  Neutrino neutrino_1{0,0,0,0,true,false,"Electron"};
+  Muon muon_1{0,sqrt(105.7),0,0,false,false,false};
+  neutrino_1.print_data();
+  muon_1.print_data();
+  */
 }
