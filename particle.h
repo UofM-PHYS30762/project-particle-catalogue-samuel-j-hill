@@ -11,7 +11,6 @@
 class Particle
 {
 protected:
-  const double speed_of_light{2.99792458e8};
   int charge{0}; // Units of elementary charge
   double spin{0};
   double rest_mass{0};
@@ -47,7 +46,7 @@ public:
   void set_antiparticle_status(bool antiparticle_status) {antiparticle = antiparticle_status;}
   void set_print_constructor_destructor_status(bool print_constructor_destructor_status) {print_constructor_destructor = print_constructor_destructor_status;}
   
-  void check_four_momentum();
+  void check_four_momentum(double particle_rest_mass);
   virtual void print_data();
 };
 

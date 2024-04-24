@@ -9,12 +9,6 @@ Particle::Particle(double particle_energy, double particle_px, double particle_p
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised particle constructor called"<<std::endl;}
   four_momentum = std::make_unique<FourMomentum>(particle_energy, particle_px, particle_py, particle_pz);
-  /*
-  if(abs((*four_momentum).get_invariant_mass() - rest_mass) > 0.001)
-  {
-    throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
-  }
-  */
   antiparticle = antiparticle_status;
   print_constructor_destructor = constructor_destructor_status;
 }
@@ -79,19 +73,35 @@ Particle& Particle::operator=(Particle&& part)
 
 void Particle::set_four_momentum_vector(double particle_energy, double particle_px, double particle_py, double particle_pz)
 {
-  four_momentum->set_four_momentum_vector(particle_energy, particle_px, particle_py, particle_pz);
-  if(abs((*four_momentum).get_invariant_mass() - rest_mass) < 0.001)
+  try
   {
-    throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
+    four_momentum->set_four_momentum_vector(particle_energy, particle_px, particle_py, particle_pz);
+    if(abs((*four_momentum).get_invariant_mass() - rest_mass) < 0.001)
+    {
+      throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
+    }
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << '\n';
   }
 }
 
-void Particle::check_four_momentum()
+void Particle::check_four_momentum(double particle_rest_mass)
 {
-  if(abs((*four_momentum).get_invariant_mass()) - rest_mass > 0.001)
+  try
   {
-    throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
-  } 
+    if(abs((*four_momentum).get_invariant_mass()) - particle_rest_mass > 0.001)
+    {
+      throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
+    } 
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr<<e.what()<<std::endl;
+    std::cout<<"Setting particle to rest. "<<std::endl;
+    (*four_momentum).set_four_momentum_vector(particle_rest_mass,0,0,0);
+  }
 }
 
 void Particle::print_data()

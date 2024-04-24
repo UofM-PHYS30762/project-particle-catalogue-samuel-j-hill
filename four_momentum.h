@@ -8,7 +8,6 @@
 class FourMomentum
 {
 private:
-  const double speed_of_light{2.99792458e8};
   std::vector<double> four_momentum_vector{0,0,0,0};
   bool print_constructor_destructor{false};
 

@@ -15,7 +15,7 @@ public:
   Neutrino() {if(print_constructor_destructor) {std::cout<<"Default neutrino constructor called"<<std::endl;}}
   // Parameterised constructor
   Neutrino(double neutrino_energy, double neutrino_px, double neutrino_py, double neutrino_pz, bool antiparticle, 
-           bool constructor_destructor_status, std::string flavour);
+           bool constructor_destructor_status, std::string neutrino_flavour);
   // Destructor 
   ~Neutrino() {if(print_constructor_destructor) {std::cout<<"Neutrino destructor called"<<std::endl;}}
   // Overwritten copy constructor

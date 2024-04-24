@@ -7,10 +7,9 @@ Muon::Muon(double muon_energy, double muon_px, double muon_py, double muon_pz, b
                                                         constructor_destructor_status), isolated{isolated_status}
           {
               if(print_constructor_destructor) {std::cout<<"Muon parameterised constructor called"<<std::endl;}
-              rest_mass = 105.7;
-              Particle::check_four_momentum();
               antiparticle ? charge = 1 : charge = -1;
-              //antiparticle ? spin = -0.5 : spin = 0.5;
+              rest_mass = 105.7;
+              Particle::check_four_momentum(rest_mass);              
           }  
 
 // Overwritten move constructor

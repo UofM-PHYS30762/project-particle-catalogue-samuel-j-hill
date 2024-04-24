@@ -3,18 +3,25 @@
 
 // Parameterised constructor
 Neutrino::Neutrino(double neutrino_energy, double neutrino_px, double neutrino_py, double neutrino_pz, bool antiparticle,
-                   bool constructor_destructor_status, std::string flavour) : 
-                   Lepton(neutrino_energy, neutrino_px, neutrino_py, neutrino_pz, antiparticle, constructor_destructor_status), 
-                   flavour{flavour} 
+                   bool constructor_destructor_status, std::string neutrino_flavour) : 
+                   Lepton(neutrino_energy, neutrino_px, neutrino_py, neutrino_pz, antiparticle, constructor_destructor_status)
           {
               if(print_constructor_destructor) {std::cout<<"Neutrino parameterised constructor called"<<std::endl;}
-              if(!(flavour == "Electron" || flavour == "electron" || flavour == "Muon" || flavour == "muon" || flavour == "Tau" || flavour == "tau"))
+              try
               {
-                throw std::invalid_argument("Flavour must be either Electron/electron, Muon/muon or Tau/tau. ");
+                flavour = neutrino_flavour;
+                if(!(flavour == "Electron" || flavour == "electron" || flavour == "Muon" || flavour == "muon" || flavour == "Tau" || flavour == "tau"))
+                {
+                  throw std::invalid_argument("Flavour must be either Electron/electron, Muon/muon or Tau/tau. ");
+                }
               }
-              rest_mass = 0;
-              Particle::check_four_momentum();
+              catch(const std::exception& e)
+              {
+                std::cerr<<e.what()<<std::endl;
+              }
               charge = 0;
+              rest_mass = 0;
+              Particle::check_four_momentum(rest_mass);
           }  
 
 // Overwritten move constructor
