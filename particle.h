@@ -35,7 +35,7 @@ public:
   // Move assignment operator
   Particle& operator=(Particle&&);
 
-  int get_charge() const {return charge;}
+  double get_charge() const {return charge;}
   double get_spin() const {return spin;}
   double get_rest_mass() const {return rest_mass;}
   std::vector<double> get_four_momentum_vector() {return four_momentum->get_four_momentum_vector();}
