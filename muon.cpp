@@ -3,8 +3,8 @@
 
 // Parameterised constructor
 Muon::Muon(double muon_energy, double muon_px, double muon_py, double muon_pz, bool antiparticle, bool constructor_destructor_status,
-           bool isolated_status) : Lepton(muon_energy, muon_px, muon_py, muon_pz, antiparticle, 
-                                                        constructor_destructor_status), isolated{isolated_status}
+           bool isolated_status) : Lepton(muon_energy, muon_px, muon_py, muon_pz, antiparticle, constructor_destructor_status), 
+           isolated{isolated_status}
           {
               if(print_constructor_destructor) {std::cout<<"Muon parameterised constructor called"<<std::endl;}
               antiparticle ? charge = 1 : charge = -1;
