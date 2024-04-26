@@ -1,6 +1,7 @@
-#include<iostream>
-#include<numeric> 
-#include<cmath>
+#include <iostream>
+#include <iomanip>
+#include <numeric> 
+#include <cmath>
 #include "electron.h"
 #include "lepton.h"
 
@@ -75,8 +76,8 @@ void Electron::print_data()
 {
    std::cout<<"Particle type: "<<(antiparticle ? "Antielectron" : "Electron")<<std::endl;
    Lepton::print_data();
-   std::cout<<"Energy deposited in EM 1 layer = "<<calorimeter_deposited_energies[0]<<std::endl;
-   std::cout<<"Energy deposited in EM 2 layer = "<<calorimeter_deposited_energies[1]<<std::endl;
-   std::cout<<"Energy deposited in HAD 1 layer = "<<calorimeter_deposited_energies[2]<<std::endl;
-   std::cout<<"Energy deposited in HAD 2 layer = "<<calorimeter_deposited_energies[3]<<std::endl;
+   std::cout<<"Energy deposited in EM 1 layer = "<<std::setprecision(3)<<calorimeter_deposited_energies[0]<<std::endl;
+   std::cout<<"Energy deposited in EM 2 layer = "<<std::setprecision(3)<<calorimeter_deposited_energies[1]<<std::endl;
+   std::cout<<"Energy deposited in HAD 1 layer = "<<std::setprecision(3)<<calorimeter_deposited_energies[2]<<std::endl;
+   std::cout<<"Energy deposited in HAD 2 layer = "<<std::setprecision(3)<<calorimeter_deposited_energies[3]<<std::endl;
 }
