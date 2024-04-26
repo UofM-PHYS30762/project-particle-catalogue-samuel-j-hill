@@ -9,7 +9,7 @@
 class Quark: public Particle
 {
 protected:
-  double baryon_number{1/3};
+  double baryon_number{0.333};
   std::string colour_charge{"None"};
   std::string flavour{"None"};
   std::map<std::string,double> quark_masses = {{"Up", 2.3}, {"Down", 4.8}, {"Charm", 1275},{"Strange", 95},{"Top", 173070},
@@ -25,6 +25,14 @@ public:
         bool constructor_destructor_status, std::string quark_flavour, std::string quark_colour_charge);
   // Destructor
   virtual ~Quark() {if(print_constructor_destructor) {std::cout<<"Quark destructor called"<<std::endl;}}
+  // Overwritten copy constructor
+  Quark(Quark& qu) : Particle(qu), baryon_number(qu.baryon_number), colour_charge(qu.colour_charge), flavour(qu.flavour) {};
+  // Overwritten move constructor
+  Quark(Quark&&);
+  // Overwritten copy assignment operator
+  Quark& operator=(Quark&);
+  // Overwritten move assignment operator
+  Quark& operator=(Quark&&);
 
   double get_quark_number() {return baryon_number;}
   std::string get_colour_charge() {return colour_charge;}

@@ -11,7 +11,7 @@
 class Particle
 {
 protected:
-  double charge{0}; // Units of elementary charge
+  double charge{0};
   double spin{0};
   double rest_mass{0};
   std::unique_ptr<FourMomentum> four_momentum = std::make_unique<FourMomentum>(0,0,0,0);

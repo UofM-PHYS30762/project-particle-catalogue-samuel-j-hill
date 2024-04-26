@@ -44,6 +44,42 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                Particle::check_four_momentum(rest_mass);
              }
 
+// Overwritten move constructor
+Quark::Quark(Quark&& qu) : Particle(qu)
+{
+  baryon_number = qu.baryon_number;
+  colour_charge = qu.colour_charge;
+  flavour = qu.flavour;
+  baryon_number = 0.333;
+  colour_charge = "None";
+  flavour = "None";
+}
+
+// Overwritten copy assignment operator
+Quark& Quark::operator=(Quark& qu) 
+{
+  if(&qu != this)
+  {
+    Particle::operator=(qu);
+  }
+  baryon_number = qu.baryon_number;
+  colour_charge = qu.colour_charge;
+  flavour = qu.flavour;
+  
+  return *this;
+}
+
+// Overwritten move assignment operator
+Quark& Quark::operator=(Quark&& qu)
+{
+  Particle::operator=(std::move(qu));
+  std::swap(baryon_number, qu.baryon_number);
+  std::swap(colour_charge, qu.colour_charge);
+  std::swap(flavour, qu.flavour);
+
+  return *this;
+}
+
 // Overwritten print function
 void Quark::print_data()
 {

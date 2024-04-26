@@ -40,7 +40,7 @@ Muon& Muon::operator=(Muon&& mu)
   return *this;
 }
 
-// Overridden print function
+// Overwritten print function
 void Muon::print_data()
 {
    std::cout<<"Particle type: "<<(antiparticle ? "Antimuon" : "Muon")<<std::endl;
