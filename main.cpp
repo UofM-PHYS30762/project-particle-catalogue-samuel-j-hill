@@ -12,14 +12,10 @@
 
 int main()
 {
-  
-  Tau tau_1;
-  Neutrino neutrino_1;
-  Muon muon_1;
-  Electron electron_1;
-  tau_1.print_data();
-  neutrino_1.print_data();
-  muon_1.print_data();
-  electron_1.print_data();
-  
+  Gluon gluon_1;
+  Quark quark_1;
+  Photon photon_1;
+  gluon_1.print_data();
+  quark_1.print_data();
+  photon_1.print_data();  
 }

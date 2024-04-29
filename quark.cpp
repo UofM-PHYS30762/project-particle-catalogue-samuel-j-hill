@@ -1,6 +1,16 @@
 #include<iostream>
 #include "quark.h"
 
+// Default constructor
+Quark::Quark()
+{
+  charge = 0.666;
+  spin = 0.5;
+  rest_mass = 2.3;
+  set_four_momentum_vector(rest_mass,0,0,0);
+  if(print_constructor_destructor) {std::cout<<"Default quark constructor called"<<std::endl;}
+}
+
 // Parameterised constructor
 Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark_pz, bool antiparticle_status,
              bool constructor_destructor_status, std::string quark_flavour, std::string quark_colour_charge) :
