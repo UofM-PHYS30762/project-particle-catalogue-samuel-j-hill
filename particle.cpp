@@ -77,7 +77,7 @@ void Particle::set_four_momentum_vector(double particle_energy, double particle_
   try
   {
     four_momentum->set_four_momentum_vector(particle_energy, particle_px, particle_py, particle_pz);
-    if(abs((*four_momentum).get_invariant_mass() - rest_mass) < 0.001)
+    if(abs((*four_momentum).get_invariant_mass() - rest_mass) > 0.000001)
     {
       throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
     }
@@ -92,7 +92,7 @@ void Particle::check_four_momentum(double particle_rest_mass)
 {
   try
   {
-    if(abs((*four_momentum).get_invariant_mass()) - particle_rest_mass > 0.001)
+    if(abs((*four_momentum).get_invariant_mass()) - particle_rest_mass > 0.00001)
     {
       throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
     } 

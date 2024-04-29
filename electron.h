@@ -8,11 +8,11 @@
 class Electron: public Lepton
 {
 private:
-  std::vector<double> calorimeter_deposited_energies{0,0,0,0};
+  std::vector<double> calorimeter_deposited_energies{0.511,0,0,0};
 
 public:
   // Default constructor
-  Electron() {if(print_constructor_destructor) {std::cout<<"Default electron constructor called"<<std::endl;}}
+  Electron();
   // Parameterised constructor
   Electron(double electron_energy, double electron_px, double electron_py, double electron_pz, bool antiparticle, 
            bool constructor_destructor_status, std::vector<double> deposited_energies);

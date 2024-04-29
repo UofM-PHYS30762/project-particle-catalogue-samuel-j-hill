@@ -7,12 +7,12 @@
 class Neutrino: public Lepton
 {
 private:
-  std::string flavour{"None"};
+  std::string flavour{"Default"};
   bool has_interacted{false};
 
 public:
   // Default constructor
-  Neutrino() {if(print_constructor_destructor) {std::cout<<"Default neutrino constructor called"<<std::endl;}}
+  Neutrino() {charge = 0; if(print_constructor_destructor) {std::cout<<"Default neutrino constructor called"<<std::endl;}}
   // Parameterised constructor
   Neutrino(double neutrino_energy, double neutrino_px, double neutrino_py, double neutrino_pz, bool antiparticle, 
            bool constructor_destructor_status, std::string neutrino_flavour);

@@ -20,8 +20,8 @@ public:
   ~FourMomentum() {if(print_constructor_destructor) {std::cout<<"Four momentum destructor called"<<std::endl;}}
 
   std::vector<double> get_four_momentum_vector() {return four_momentum_vector;}
-  double get_invariant_mass() {return std::pow(four_momentum_vector[0],2) - std::pow(four_momentum_vector[1],2)
-                                            - std::pow(four_momentum_vector[2],2) - std::pow(four_momentum_vector[3],2);}
+  double get_invariant_mass() {return sqrt(std::pow(four_momentum_vector[0],2) - std::pow(four_momentum_vector[1],2)
+                                            - std::pow(four_momentum_vector[2],2) - std::pow(four_momentum_vector[3],2));}
   bool get_print_constructor_destructor_status() const {return print_constructor_destructor;}
   
   void set_four_momentum_vector(double energy, double p_x, double p_y, double p_z);

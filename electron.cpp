@@ -5,6 +5,14 @@
 #include "electron.h"
 #include "lepton.h"
 
+// Default constructor
+Electron::Electron()
+{
+  rest_mass = 0.511;
+  set_four_momentum_vector(rest_mass,0,0,0);
+  if(print_constructor_destructor) {std::cout<<"Default electron constructor called"<<std::endl;}
+}
+
 // Parameterised constructor
 Electron::Electron(double electron_energy, double electron_px, double electron_py, double electron_pz, bool antiparticle, 
                    bool constructor_destructor_status, std::vector<double> deposited_energies) : 

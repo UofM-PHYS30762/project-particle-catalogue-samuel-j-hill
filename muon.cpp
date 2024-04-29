@@ -1,6 +1,14 @@
 #include<iostream>
 #include "muon.h"
 
+// Default constructor
+Muon::Muon()
+{
+  rest_mass = 105.7;
+  set_four_momentum_vector(rest_mass,0,0,0);
+  if(print_constructor_destructor) {std::cout<<"Default muon constructor called"<<std::endl;}
+}
+
 // Parameterised constructor
 Muon::Muon(double muon_energy, double muon_px, double muon_py, double muon_pz, bool antiparticle, bool constructor_destructor_status,
            bool isolated_status) : Lepton(muon_energy, muon_px, muon_py, muon_pz, antiparticle, constructor_destructor_status), 

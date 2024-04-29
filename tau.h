@@ -15,7 +15,7 @@ private:
 
 public:
   // Default constructor
-  Tau() {if(print_constructor_destructor) {std::cout<<"Default tau constructor called"<<std::endl;}}
+  Tau();
   // Parameterised constructor
   Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool antiparticle, bool constructor_destructor_status,
       bool electron_decay, bool muon_decay);

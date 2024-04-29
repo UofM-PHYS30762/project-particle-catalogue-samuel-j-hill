@@ -12,13 +12,14 @@
 
 int main()
 {
+  
   Tau tau_1;
-  Tau tau_2{sqrt(1777),0,0,0,false,false,true,false};
+  Neutrino neutrino_1;
+  Muon muon_1;
+  Electron electron_1;
   tau_1.print_data();
-  tau_2.print_data();
-  //Neutrino neutrino_1{0,0,0,0,true,false,"Electron"};
-  //Muon muon_1{0,sqrt(105.7),0,0,true,false,false};
-  //neutrino_1.print_data();
-  //muon_1.print_data();
-
+  neutrino_1.print_data();
+  muon_1.print_data();
+  electron_1.print_data();
+  
 }

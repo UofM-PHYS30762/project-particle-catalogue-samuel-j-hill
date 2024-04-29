@@ -18,6 +18,7 @@ Neutrino::Neutrino(double neutrino_energy, double neutrino_px, double neutrino_p
               catch(const std::exception& e)
               {
                 std::cerr<<e.what()<<std::endl;
+                flavour = "Default";
               }
               charge = 0;
               rest_mass = 0;

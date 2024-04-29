@@ -11,7 +11,7 @@ private:
 
 public:
   // Default constructor
-  Muon() {if(print_constructor_destructor) {std::cout<<"Default muon constructor called"<<std::endl;}}
+  Muon();
   // Parameterised constructor
   Muon(double muon_energy, double muon_px, double muon_py, double muon_pz, bool antiparticle, bool constructor_destructor_status, 
        bool isolated);

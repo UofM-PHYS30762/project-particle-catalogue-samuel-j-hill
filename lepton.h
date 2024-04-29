@@ -12,11 +12,11 @@
 class Lepton: public Particle
 {
 protected:
-  int lepton_number{1};
+  int lepton_number;
 
 public:
   // Default constructor
-  Lepton() {if(print_constructor_destructor) {std::cout<<"Default lepton constructor called"<<std::endl;}};
+  Lepton() {lepton_number = 1; charge = -1; spin = 0.5; if(print_constructor_destructor) {std::cout<<"Default lepton constructor called"<<std::endl;}};
   // Parameterised constructor
   Lepton(double lepton_energy, double lepton_px, double lepton_py, double lepton_pz, bool antiparticle, 
          bool constructor_destructor_status);

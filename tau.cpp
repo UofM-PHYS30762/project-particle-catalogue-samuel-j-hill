@@ -5,6 +5,14 @@
 #include "neutrino.h"
 #include "tau.h"
 
+// Default constructor
+Tau::Tau()
+{
+  rest_mass = 1777;
+  set_four_momentum_vector(rest_mass,0,0,0);
+  if(print_constructor_destructor) {std::cout<<"Default tau constructor called"<<std::endl;}
+}
+
 // Parameterised constructor
 Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool antiparticle, bool constructor_destructor_status,
          bool electron_decay, bool muon_decay) : Lepton(tau_energy, tau_px, tau_py, tau_pz, antiparticle, constructor_destructor_status)
@@ -91,10 +99,13 @@ void Tau::print_data()
 {
    std::cout<<"Particle type: "<<(antiparticle ? "Antitau" : "Tau")<<std::endl;
    Lepton::print_data();
-   std::cout<<"\nPrinting data of tau decay products\n"<<std::endl;
-   for(auto i=decay_products.begin(); i<decay_products.end(); i++)
+   if(decay_products.size()>0)
    {
-     (*i)->print_data();
-     std::cout<<"\n"<<std::endl;
+     std::cout<<"\nPrinting data of tau decay products\n"<<std::endl;
+     for(auto i=decay_products.begin(); i<decay_products.end(); i++)
+     {
+       (*i)->print_data();
+       std::cout<<"\n"<<std::endl;
+     }
    }
 }
