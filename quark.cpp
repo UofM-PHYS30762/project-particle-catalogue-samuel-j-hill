@@ -50,7 +50,7 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                  std::cerr<<e.what()<<std::endl;
                }              
                rest_mass = quark_masses[flavour];
-               charge = quark_charges[flavour];
+               antiparticle ? charge = -quark_charges[flavour] : charge = quark_charges[flavour];
                Particle::check_four_momentum(rest_mass);
              }
 

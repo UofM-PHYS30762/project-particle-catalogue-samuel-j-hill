@@ -12,10 +12,6 @@
 
 int main()
 {
-  Gluon gluon_1;
-  Quark quark_1;
-  Photon photon_1;
-  gluon_1.print_data();
-  quark_1.print_data();
-  photon_1.print_data();  
+  Tau tau_1{1777,0,0,0,true,false,"Kaon"};
+  tau_1.print_data();  
 }
