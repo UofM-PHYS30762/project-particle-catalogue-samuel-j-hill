@@ -22,6 +22,7 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            antiparticle ? charge = 1 : charge = -1;
            rest_mass = 1777;
            Particle::check_four_momentum(rest_mass);
+           decay_type = decay_type;
 
            std::shared_ptr<Particle> tau_neutrino = std::make_shared<Neutrino>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
                                                                                constructor_destructor_status, "Tau");
@@ -67,6 +68,7 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            else
            {
              std::cout<<"Decay type not recognised: must be either Electron, Muon, Pion or Kaon "<<std::endl;
+             decay_type = "Unrecognised";
              decay_products.pop_back(); // Other decay products cannot be created so tau neutrino is removed so that the vector is empty
            }
          }

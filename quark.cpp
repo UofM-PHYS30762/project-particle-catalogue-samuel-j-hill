@@ -31,6 +31,7 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                catch(const std::exception& e)
                {
                  std::cerr<<e.what()<<std::endl;
+                 flavour = "Unspecified";
                }
 
                try
@@ -48,6 +49,7 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                catch(const std::exception& e)
                {
                  std::cerr<<e.what()<<std::endl;
+                 colour_charge = "Unspecified";
                }              
                rest_mass = quark_masses[flavour];
                antiparticle ? charge = -quark_charges[flavour] : charge = quark_charges[flavour];

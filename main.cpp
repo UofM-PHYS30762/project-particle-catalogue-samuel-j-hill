@@ -9,9 +9,10 @@
 #include "quark.h"
 #include "photon.h"
 #include "gluon.h"
+#include "z_boson.h"
 
 int main()
-{
-  Tau tau_1{1777,0,0,0,true,false,"Kaon"};
-  tau_1.print_data();  
+{  
+  ZBoson test{91200,0,0,0,false,"Leptonic","Electron neutrino"};
+  test.print_data();
 }

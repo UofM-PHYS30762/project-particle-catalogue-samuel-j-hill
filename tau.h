@@ -29,6 +29,7 @@ public:
   // Overwritten move assignment operator
   Tau& operator=(Tau&&);
 
+  std::string get_decay_type() {return decay_type;}
   std::vector<std::shared_ptr<Particle>> get_decay_products() {return decay_products;} 
   void print_data();
 };
