@@ -62,6 +62,16 @@ ZBoson::ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, doub
                     decay_products.push_back(muon);
                     decay_products.push_back(antimuon);  
                    }
+                   else if(decay_flavour == "Tau")
+                   {
+                     std::shared_ptr<Particle> tau = std::make_unique<Tau>(z_boson_energy/2, z_boson_px/2, z_boson_py/2, z_boson_pz/2,
+                                                                            false, constructor_destructor_status, "None");
+                     std::shared_ptr<Particle> antitau = std::make_unique<Tau>(z_boson_energy/2, z_boson_px/2, z_boson_py/2, 
+                                                                                 z_boson_pz/2, true, constructor_destructor_status,
+                                                                                 "None");
+                    decay_products.push_back(tau);
+                    decay_products.push_back(antitau);  
+                   }
                    else if(decay_flavour == "Electron neutrino" || decay_flavour == "Muon neutrino" || decay_flavour == "Tau neutrino")
                    {
                      std::string neutrino_flavour = decay_flavour.substr(0,decay_flavour.size()-9);
@@ -77,11 +87,13 @@ ZBoson::ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, doub
                    else
                    {
                      std::cout<<"Decay flavour not recognised"<<std::endl;
+                     decay_type = "Unrecognised";
                    }
                  } 
-                 else
+                 else if(decay_type != "None")
                  {
                    std::cout<<"Decay type not recognised"<<std::endl;
+                   decay_type = "Unrecognised";
                  }
                }
 

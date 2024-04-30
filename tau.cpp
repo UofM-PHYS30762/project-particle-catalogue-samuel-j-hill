@@ -65,11 +65,14 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
              decay_products.push_back(up_quark);
              decay_products.push_back(strange_quark);                                                                              
            }
-           else
+           else 
            {
-             std::cout<<"Decay type not recognised: must be either Electron, Muon, Pion or Kaon "<<std::endl;
-             decay_type = "Unrecognised";
-             decay_products.pop_back(); // Other decay products cannot be created so tau neutrino is removed so that the vector is empty
+             if(decay_type != "None")
+             {
+               std::cout<<"Decay type not recognised: must be either Electron, Muon, Pion or Kaon "<<std::endl;
+               decay_type = "Unrecognised";
+             }
+             decay_products.pop_back(); // Other decay products cannot be created so neutrino is removed so that the vector is empty
            }
          }
 
