@@ -11,9 +11,10 @@
 #include "gluon.h"
 #include "z_boson.h"
 #include "w_boson.h"
+#include "higgs_boson.h"
 
 int main()
 {  
-  WBoson w_boson_1(80400,0,0,0,false,false,"None","None");
-  w_boson_1.print_data();
+  HiggsBoson higgs_boson_1;
+  higgs_boson_1.print_data();
 }
