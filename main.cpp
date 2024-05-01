@@ -10,11 +10,10 @@
 #include "photon.h"
 #include "gluon.h"
 #include "z_boson.h"
+#include "w_boson.h"
 
 int main()
 {  
-  Tau tau_1{1777,0,0,0,false,false,"None"};
-  ZBoson z_boson_1{91200,0,0,0,false,"Leptonic","Tau"};
-  tau_1.print_data();
-  z_boson_1.print_data();
+  WBoson w_boson_1(80400,0,0,0,false,false,"None","None");
+  w_boson_1.print_data();
 }

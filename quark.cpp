@@ -18,7 +18,7 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
              {
                if(print_constructor_destructor) {std::cout<<"Quark parameterised constructor called"<<std::endl;}
                antiparticle_status ? baryon_number = -0.333 : baryon_number = 0.333;
-               antiparticle_status ? spin = -0.5 : spin = 0.5;
+               spin = 0.5;
                try
                {
                  flavour = quark_flavour;

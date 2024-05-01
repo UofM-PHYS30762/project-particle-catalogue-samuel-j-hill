@@ -1,12 +1,12 @@
-#ifndef Z_BOSON_H
-#define Z_BOSON_H
+#ifndef W_BOSON_H
+#define W_BOSON_H
 
 #include <iostream>
 #include <vector>
 #include <memory>
 #include"particle.h"
 
-class ZBoson : public Particle
+class WBoson : public Particle
 {
 private:
   std::string decay_type{"None"};
@@ -15,20 +15,20 @@ private:
 
 public:
   // Default constructor
-  ZBoson();
+  WBoson();
   // Parameterised constructor
-  ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, double z_boson_pz, bool constructor_destructor_status,
-         std::string decay_type, std::string decay_flavour);
+  WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, double w_boson_pz, bool antiparticle,
+         bool constructor_destructor_status, std::string decay_type, std::string decay_flavour);
   // Destructor 
-  ~ZBoson() {if(print_constructor_destructor) {std::cout<<"Z boson destructor called"<<std::endl;}}
+  ~WBoson() {if(print_constructor_destructor) {std::cout<<"W boson destructor called"<<std::endl;}}
   // Overwritten copy constructor
-  ZBoson(ZBoson& z) : Particle(z), decay_type(z.decay_type), decay_flavour(z.decay_flavour), decay_products(z.decay_products) {};
+  WBoson(WBoson& w) : Particle(w), decay_type(w.decay_type), decay_flavour(w.decay_flavour), decay_products(w.decay_products) {};
   // Overwritten move constructor
-  ZBoson(ZBoson&&);
+  WBoson(WBoson&&);
   // Overwritten copy assignment operator
-  ZBoson& operator=(ZBoson&);
+  WBoson& operator=(WBoson&);
   // Overwritten move assignment operator
-  ZBoson& operator=(ZBoson&&);
+  WBoson& operator=(WBoson&&);
 
   std::string get_decay_type() {return decay_type;}
   std::string get_decay_flavour() {return decay_flavour;}

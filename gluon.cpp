@@ -7,6 +7,6 @@ Gluon::Gluon(double gluon_energy, double gluon_px, double gluon_py, double gluon
                                                             constructor_destructor_status)
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised gluon constructor called"<<std::endl;}
-  antiparticle ? spin = -1 : spin = 1;
+  spin = 1;
   Particle::check_four_momentum(rest_mass);
 };

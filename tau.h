@@ -9,7 +9,7 @@
 class Tau: public Lepton
 {
 private:
-  std::string decay_type;
+  std::string decay_type{"None"};
   std::vector<std::shared_ptr<Particle>> decay_products;
 
 public:
