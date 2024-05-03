@@ -51,10 +51,10 @@ public:
   ~ParticleCatalogue() {std::cout<<"Particle catalogue destructor called"<<std::endl;}
 
   particle_catalogue get_particle_catalogue() {return catalogue;}
-  template <class c_type> int get_number_of_entries_of_type();
+  template <class c_type> ParticleCatalogue get_subcatalogue();
   int get_number_of_entries() {return catalogue.size();}
+  template <class c_type> int get_number_of_entries_of_type();
   void add_particle(std::shared_ptr<Particle> particle) {catalogue.insert(std::move(particle));}
-  //template <class c_type> void add_particle(c_type particle) {catalogue.insert(std::move(particle));}
   void print_catalogue();
 };
 
@@ -70,6 +70,21 @@ template <class c_type> int ParticleCatalogue::get_number_of_entries_of_type()
   }
 
   return counter;
+}
+
+template <class c_type> ParticleCatalogue ParticleCatalogue::get_subcatalogue()
+{
+  ParticleCatalogue subcatalogue;
+  for(auto i = catalogue.begin(); i != catalogue.end(); i++)
+  {
+    std::shared_ptr<c_type> derived_ptr = std::dynamic_pointer_cast<c_type>(*i);
+    if(derived_ptr != nullptr)
+    {
+      subcatalogue.add_particle(*i);
+    }
+  }
+
+  return subcatalogue; 
 }
 
 #endif

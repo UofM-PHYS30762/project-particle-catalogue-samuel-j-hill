@@ -12,11 +12,11 @@ ParticleCatalogue::ParticleCatalogue(std::vector<std::shared_ptr<Particle>>& par
 
 void ParticleCatalogue::print_catalogue()
 {
-  std::cout<<"Printing data of all particles in the catalogue.\n"<<std::endl;
+  std::cout<<"Printing data of all "<<catalogue.size()<<" particles in the catalogue.\n"<<std::endl;
   for(auto i = catalogue.begin(); i != catalogue.end(); i++)
   {
     (*i)->print_data();
-    std::cout<<""<<std::endl;
+    std::cout<<"-------------------------------------"<<std::endl;
   }
-  std::cout<<"\nPrinting of all "<<catalogue.size()<<" particles in catalogue complete."<<std::endl;
+  std::cout<<"\nPrinting of all particles in catalogue complete."<<std::endl;
 }
