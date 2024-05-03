@@ -12,9 +12,16 @@
 #include "z_boson.h"
 #include "w_boson.h"
 #include "higgs_boson.h"
+#include "particle_catalogue.h"
 
 int main()
 {  
-  HiggsBoson higgs_boson_1;
-  higgs_boson_1.print_data();
+  std::unique_ptr<Particle> muon = std::make_unique<Muon>(105.7,0,0,0,true,false,false);
+  std::unique_ptr<Particle> quark = std::make_unique<Quark>(2.3,0,0,0,false,false,"Up","Red");
+  ParticleCatalogue catalogue;
+  catalogue.add_particle(std::move(muon));
+  catalogue.add_particle(std::move(quark));
+  catalogue.print_catalogue();
+
+  return 0;
 }
