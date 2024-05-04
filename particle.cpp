@@ -74,18 +74,8 @@ Particle& Particle::operator=(Particle&& part)
 
 void Particle::set_four_momentum_vector(double particle_energy, double particle_px, double particle_py, double particle_pz)
 {
-  try
-  {
-    four_momentum->set_four_momentum_vector(particle_energy, particle_px, particle_py, particle_pz);
-    if(abs((*four_momentum).get_invariant_mass() - rest_mass) > 0.000001)
-    {
-      throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
-    }
-  }
-  catch(const std::exception& e)
-  {
-    std::cerr << e.what() << '\n';
-  }
+  four_momentum->set_four_momentum_vector(particle_energy, particle_px, particle_py, particle_pz);
+  check_four_momentum(rest_mass);
 }
 
 void Particle::check_four_momentum(double particle_rest_mass)
