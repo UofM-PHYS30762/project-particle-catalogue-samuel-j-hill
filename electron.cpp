@@ -71,12 +71,21 @@ Electron& Electron::operator=(Electron&& elec)
 
 void Electron::set_calorimeter_deposited_energies(std::vector<double> deposited_energies)
 {
-  if(abs(std::accumulate(calorimeter_deposited_energies.begin(),calorimeter_deposited_energies.end(),0.0) - 
-     (four_momentum->get_four_momentum_vector())[0]) > 0.01)
+  try
   {
-    throw std::invalid_argument("Energies deposited in calorimeter must sum to electron energy. ");
+    calorimeter_deposited_energies = deposited_energies;
+    if(abs(std::accumulate(calorimeter_deposited_energies.begin(),calorimeter_deposited_energies.end(),0.0) - 
+     (four_momentum->get_four_momentum_vector())[0]) > 0.0001)
+    {
+      throw std::invalid_argument("Energies deposited in calorimeter must sum to electron energy. ");
+    }
   }
-  calorimeter_deposited_energies = deposited_energies;
+  catch(const std::exception& e)
+  {
+    std::cerr<<e.what()<<std::endl;
+    std::vector<double> replacement_deposited_energies{get_four_momentum_vector()[0],0,0,0};
+    calorimeter_deposited_energies = replacement_deposited_energies;
+  }
 }
 
 // Overridden print function

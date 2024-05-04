@@ -17,15 +17,11 @@
 int main()
 {  
   
-  std::unique_ptr<Particle> muon_1 = std::make_unique<Muon>(105.7,0,0,0,true,false,false);
-  std::unique_ptr<Particle> muon_2 = std::make_unique<Muon>(105.7,0,0,0,false,false,false);
-  std::unique_ptr<Particle> quark = std::make_unique<Quark>(2.3,0,0,0,false,false,"Up","Red");
-  ParticleCatalogue catalogue;
-  catalogue.add_particle(std::move(muon_1));
-  catalogue.add_particle(std::move(muon_2));
-  catalogue.add_particle(std::move(quark));
-  catalogue.print_catalogue();
-  //std::cout<<catalogue.get_total_four_momentum()[0];
+  std::vector<double> energies{0.511/2,0.511/2,0,0};
+  std::vector<double> energies_2{0.511/2,0.511/2,9,0};
+  Electron electron_1{0.511,0,0,0,false,false,energies};
+  electron_1.set_calorimeter_deposited_energies(energies_2);
+  std::cout<<electron_1.get_calorimeter_deposited_energies()[2];
 
   return 0;
 }
