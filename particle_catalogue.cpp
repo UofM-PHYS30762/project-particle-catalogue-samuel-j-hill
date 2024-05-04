@@ -19,4 +19,10 @@ void ParticleCatalogue::print_catalogue()
     std::cout<<"-------------------------------------"<<std::endl;
   }
   std::cout<<"\nPrinting of all particles in catalogue complete."<<std::endl;
+  std::cout<<"Summarising number of particles of each type: \n"<<std::endl;
+  std::cout<<get_number_of_entries_of_type<Electron>()<<" Electron(s)\n"<<get_number_of_entries_of_type<Muon>()<<" Muon(s)\n"<<
+  get_number_of_entries_of_type<Tau>()<<" Tau(s)\n"<<get_number_of_entries_of_type<Neutrino>()<<" Neutrino(s)\n"<<
+  get_number_of_entries_of_type<Quark>()<<" Quark(s)\n"<<get_number_of_entries_of_type<Photon>()<<" Photon(s)\n"<<
+  get_number_of_entries_of_type<Gluon>()<<" Gluon(s)\n"<<get_number_of_entries_of_type<WBoson>()<<" W boson(s)\n"<<
+  get_number_of_entries_of_type<ZBoson>()<<" Z boson(s)\n"<<get_number_of_entries_of_type<HiggsBoson>()<<" Higgs boson(s)\n"<<std::endl;
 }
