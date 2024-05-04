@@ -9,8 +9,9 @@
 class ZBoson : public Particle
 {
 private:
-  std::string decay_type{"None"};
-  std::string decay_flavour;
+  std::string decay_type{"None"}; // Either "Hadronic", "Leptonic" or "None"
+  std::string decay_flavour; // Hadronic type -> any flavour of quark or "None"
+                             // Leptonic type -> "Electron", "Muon", "Tau", "Electron neutrino", "Muon neutrino", "Tau neutrino", "None"
   std::vector<std::shared_ptr<Particle>> decay_products;
 
 public:

@@ -9,7 +9,7 @@
 class HiggsBoson : public Particle
 {
 private: 
-  std::string decay_type{"None"};
+  std::string decay_type{"None"}; // Either "Z boson", "W boson", "Photon", "Bottom quark" or "None"
   std::vector<std::shared_ptr<Particle>> decay_products;
 
 public:

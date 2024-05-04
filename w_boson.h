@@ -9,8 +9,9 @@
 class WBoson : public Particle
 {
 private:
-  std::string decay_type{"None"};
-  std::string decay_flavour;
+  std::string decay_type{"None"}; // Either "Hadronic", "Leptonic" or "None"
+  std::string decay_flavour; // Hadronic type -> "Up Down", "Up Strange", "Up Bottom", "Charm Down", "Charm Strange", "Charm Bottom", "None"
+                             // Leptonic type -> "Electron", "Muon", "Tau", "None"
   std::vector<std::shared_ptr<Particle>> decay_products;
 
 public:

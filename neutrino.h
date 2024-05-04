@@ -7,7 +7,7 @@
 class Neutrino: public Lepton
 {
 private:
-  std::string flavour{"Default"};
+  std::string flavour{"Default"}; // Either "Electron", "Muon", or "Tau"
   bool has_interacted{false};
 
 public:
