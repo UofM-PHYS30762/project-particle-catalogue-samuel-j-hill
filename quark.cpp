@@ -98,5 +98,10 @@ void Quark::print_data()
   std::cout<<"Particle type: "<<flavour<<(antiparticle ? " antiquark" : " quark")<<std::endl;
   std::cout<<"Baryon number = "<<baryon_number<<std::endl;
   std::cout<<"Colour charge = "<<colour_charge<<std::endl;
-  Particle::print_data();  
+  std::cout<<"Charge = "<<charge<<std::endl;
+  std::cout<<"Spin = "<<spin<<std::endl;
+  std::cout<<"Rest mass = "<<rest_mass<<std::endl;
+  std::cout<<"Four momentum = ["<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[0]<<","<<std::setprecision(3)<<
+  four_momentum->get_four_momentum_vector()[1]<<","<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[2]<<","<<
+  std::setprecision(3)<<four_momentum->get_four_momentum_vector()[3]<<"]"<<std::endl;  
 }

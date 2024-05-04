@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include<cmath>
+#include <iomanip>
 #include<vector>
 #include<memory>
 #include "four_momentum.h"
@@ -48,7 +49,7 @@ public:
   void set_print_constructor_destructor_status(bool print_constructor_destructor_status) {print_constructor_destructor = print_constructor_destructor_status;}
   
   void check_four_momentum(double particle_rest_mass);
-  virtual void print_data();
+  virtual void print_data()=0;
 };
 
 #endif 

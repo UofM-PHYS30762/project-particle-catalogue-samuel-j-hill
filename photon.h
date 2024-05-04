@@ -14,7 +14,7 @@ public:
   // Destructor
   ~Photon() {if(print_constructor_destructor) {std::cout<<"Photon destructor called"<<std::endl;}}
 
-  void print_data() {std::cout<<"Particle type: Photon"<<std::endl; Particle::print_data();}
+  void print_data();
 };
 
 #endif

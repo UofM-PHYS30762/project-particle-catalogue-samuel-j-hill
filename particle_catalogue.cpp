@@ -10,6 +10,7 @@ ParticleCatalogue::ParticleCatalogue(std::vector<std::shared_ptr<Particle>>& par
   }
 }
 
+/*
 std::vector<double> ParticleCatalogue::get_total_four_momentum()
 {
   FourMomentum total_four_momentum{0,0,0,0};
@@ -24,6 +25,7 @@ std::vector<double> ParticleCatalogue::get_total_four_momentum()
 
   return total_four_momentum_vector;
 }
+*/
 
 void ParticleCatalogue::print_catalogue()
 {

@@ -15,7 +15,7 @@ public:
   // Destructor
   ~Gluon() {if(print_constructor_destructor) {std::cout<<"Gluon destructor called"<<std::endl;}}
 
-  void print_data() {std::cout<<"Particle type: "<<(antiparticle ? "Antigluon" : "Gluon")<<std::endl; Particle::print_data();}
+  void print_data();
 };
 
 #endif

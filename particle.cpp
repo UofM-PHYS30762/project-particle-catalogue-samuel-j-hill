@@ -104,14 +104,3 @@ void Particle::check_four_momentum(double particle_rest_mass)
     (*four_momentum).set_four_momentum_vector(particle_rest_mass,0,0,0);
   }
 }
-
-void Particle::print_data()
-{
-  std::cout<<"Charge = "<<charge<<std::endl;
-  std::cout<<"Spin = "<<spin<<std::endl;
-  std::cout<<"Rest mass = "<<rest_mass<<std::endl;
-  std::cout<<"Four momentum = ["<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[0]<<","<<std::setprecision(3)<<
-  four_momentum->get_four_momentum_vector()[1]<<","<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[2]<<","<<
-  std::setprecision(3)<<four_momentum->get_four_momentum_vector()[3]<<"]"<<std::endl;
-}
-

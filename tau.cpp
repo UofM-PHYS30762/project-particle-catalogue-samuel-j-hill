@@ -110,15 +110,20 @@ Tau& Tau::operator=(Tau&& tau)
 
 void Tau::print_data()
 {
-   std::cout<<"Particle type: "<<(antiparticle ? "Antitau" : "Tau")<<std::endl;
-   Lepton::print_data();
-   if(decay_products.size()>0)
-   {
-     std::cout<<"\nPrinting data of tau decay products\n"<<std::endl;
-     for(auto i=decay_products.begin(); i<decay_products.end(); i++)
-     {
-       (*i)->print_data();
-       std::cout<<"\n"<<std::endl;
-     }
-   }
+  std::cout<<"Particle type: "<<(antiparticle ? "Antitau" : "Tau")<<std::endl;
+  std::cout<<"Charge = "<<charge<<std::endl;
+  std::cout<<"Spin = "<<spin<<std::endl;
+  std::cout<<"Rest mass = "<<rest_mass<<std::endl;
+  std::cout<<"Four momentum = ["<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[0]<<","<<std::setprecision(3)<<
+  four_momentum->get_four_momentum_vector()[1]<<","<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[2]<<","<<
+  std::setprecision(3)<<four_momentum->get_four_momentum_vector()[3]<<"]"<<std::endl;
+  if(decay_products.size()>0)
+  {
+    std::cout<<"\nPrinting data of tau decay products\n"<<std::endl;
+    for(auto i=decay_products.begin(); i<decay_products.end(); i++)
+    {
+      (*i)->print_data();
+      std::cout<<"\n"<<std::endl;
+    }
+  }
 }

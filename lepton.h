@@ -24,7 +24,7 @@ public:
   virtual ~Lepton() {if(print_constructor_destructor) {std::cout<<"Lepton destructor called"<<std::endl;}}
 
   int get_lepton_number() {return lepton_number;} 
-  void print_data() {std::cout<<"Lepton number = "<<lepton_number<<std::endl; Particle::print_data();}
+  void print_data();
 };
 
 #endif
