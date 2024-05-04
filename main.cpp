@@ -25,6 +25,7 @@ int main()
   catalogue.add_particle(std::move(muon_2));
   catalogue.add_particle(std::move(quark));
   catalogue.print_catalogue();
+  std::cout<<catalogue.get_total_four_momentum()[0];
 
   return 0;
 }

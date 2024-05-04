@@ -48,7 +48,7 @@ Particle::Particle(Particle &&part)
 Particle& Particle::operator=(Particle &part)
 {
   if(print_constructor_destructor) {std::cout<<"Copy assignment operator called"<<std::endl;}
-  if(&part == this) return *this;
+  if(&part == this) {return *this;}
   charge = part.charge;
   spin = part.spin;
   rest_mass = part.rest_mass;

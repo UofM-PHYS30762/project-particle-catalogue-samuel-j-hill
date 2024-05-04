@@ -26,26 +26,42 @@ FourMomentum::FourMomentum(double energy, double p_x, double p_y, double p_z)
   }
 }
 
-std::vector<double> sum(FourMomentum& four_momentum_1, FourMomentum& four_momentum_2)
+// Move constructor
+FourMomentum::FourMomentum(FourMomentum &&other_four_momentum)
+{
+  four_momentum_vector = other_four_momentum.four_momentum_vector;
+  other_four_momentum.set_four_momentum_vector(0,0,0,0);
+}
+
+// Copy assignment operator
+FourMomentum& FourMomentum::operator=(FourMomentum &other_four_momentum)
+{
+  if(&other_four_momentum == this) {return *this;}
+  four_momentum_vector = other_four_momentum.four_momentum_vector;
+  
+  return *this;
+}
+
+std::vector<double> FourMomentum::operator+(FourMomentum& other_four_momentum)
 {
   std::vector<double> summed_four_momentum;
   for(int i = 0; i < 4; i++)
   {
-    summed_four_momentum.push_back((four_momentum_1.four_momentum_vector)[i] + (four_momentum_2.four_momentum_vector)[i]);
+    summed_four_momentum.push_back(four_momentum_vector[i] + (other_four_momentum.four_momentum_vector)[i]);
   }
   
   return summed_four_momentum;
 }
 
-std::vector<double> difference(FourMomentum& four_momentum_1, FourMomentum& four_momentum_2)
+std::vector<double> FourMomentum::operator-(FourMomentum& other_four_momentum)
 {
-  std::vector<double> summed_four_momentum;
+  std::vector<double> subtracted_four_momentum;
   for(int i = 0; i < 4; i++)
   {
-    summed_four_momentum.push_back((four_momentum_1.four_momentum_vector)[i] - (four_momentum_2.four_momentum_vector)[i]);
+    subtracted_four_momentum.push_back(four_momentum_vector[i] + (other_four_momentum.four_momentum_vector)[i]);
   }
   
-  return summed_four_momentum;
+  return subtracted_four_momentum;
 }
 
 double dot_product(FourMomentum& four_momentum_1, FourMomentum& four_momentum_2)

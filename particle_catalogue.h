@@ -34,6 +34,7 @@ public:
   template <class c_type> ParticleCatalogue get_subcatalogue();
   int get_number_of_entries() {return catalogue.size();}
   template <class c_type> int get_number_of_entries_of_type();
+  std::vector<double> get_total_four_momentum();
   void add_particle(std::shared_ptr<Particle> particle) {catalogue.insert(std::move(particle));}
   void print_catalogue();
 };

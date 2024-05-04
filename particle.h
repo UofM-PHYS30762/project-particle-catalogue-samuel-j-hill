@@ -38,6 +38,7 @@ public:
   double get_charge() const {return charge;}
   double get_spin() const {return spin;}
   double get_rest_mass() const {return rest_mass;}
+  FourMomentum get_four_momentum() const {return *four_momentum;}
   std::vector<double> get_four_momentum_vector() {return four_momentum->get_four_momentum_vector();}
   bool get_antiparticle_status() const {return antiparticle;}
   bool get_print_constructor_destructor_status() const {return print_constructor_destructor;}

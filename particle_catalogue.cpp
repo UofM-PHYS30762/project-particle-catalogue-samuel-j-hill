@@ -10,6 +10,21 @@ ParticleCatalogue::ParticleCatalogue(std::vector<std::shared_ptr<Particle>>& par
   }
 }
 
+std::vector<double> ParticleCatalogue::get_total_four_momentum()
+{
+  FourMomentum total_four_momentum{0,0,0,0};
+  std::vector<double> total_four_momentum_vector{0,0,0,0};
+  for(auto i = catalogue.begin(); i != catalogue.end(); i++)
+  {
+    Particle iterator_particle{*(*i)};
+    total_four_momentum_vector = iterator_particle.get_four_momentum() + total_four_momentum;
+    total_four_momentum.set_four_momentum_vector(total_four_momentum_vector[0], total_four_momentum_vector[1],
+                                                 total_four_momentum_vector[2], total_four_momentum_vector[3]);
+  }
+
+  return total_four_momentum_vector;
+}
+
 void ParticleCatalogue::print_catalogue()
 {
   std::cout<<"Printing data of all "<<catalogue.size()<<" particles in the catalogue.\n"<<std::endl;
