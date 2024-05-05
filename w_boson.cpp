@@ -35,30 +35,42 @@ WBoson::WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, doub
                    if(decay_flavour.substr(0,2) == "Up")
                    {
                      std::string other_flavour = decay_flavour.substr(3, decay_flavour.size()-3);
-                     std::shared_ptr<Particle> up_quark = std::make_unique<Quark>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                  w_boson_pz/2, antiparticle, 
-                                                                                  constructor_destructor_status, "Up",
-                                                                                  (antiparticle ? "Antired" : "Red"));
-                     std::shared_ptr<Particle> other_quark = std::make_unique<Quark>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                    w_boson_pz/2, !antiparticle, 
-                                                                                    constructor_destructor_status, other_flavour,
-                                                                                    (antiparticle ? "Red" : "Antired"));   
-                     decay_products.push_back(up_quark);
-                     decay_products.push_back(other_quark);
+                     if(other_flavour == "Down" || other_flavour == "Strange" || other_flavour == "Bottom")
+                     {
+                       std::shared_ptr<Particle> up_quark = std::make_unique<Quark>(2.3, 0, 0, 0, antiparticle, 
+                                                                                    constructor_destructor_status, "Up",
+                                                                                    (antiparticle ? "Antired" : "Red"));
+                       std::shared_ptr<Particle> other_quark = std::make_unique<Quark>(Quark::quark_masses[other_flavour], 0, 0, 0,
+                                                                                       !antiparticle, constructor_destructor_status,
+                                                                                       other_flavour, (antiparticle ? "Red" : "Antired"));   
+                       decay_products.push_back(up_quark);
+                       decay_products.push_back(other_quark);
+                     }
+                     else
+                     {
+                       std::cout<<"Second decay flavour not recognised. "<<std::endl;
+                       decay_flavour = "Unrecognised";
+                     }
                    }
                    else if(decay_flavour.substr(0,5) == "Charm")
                    {
                      std::string other_flavour = decay_flavour.substr(6, decay_flavour.size()-6);
-                     std::shared_ptr<Particle> charm_quark = std::make_unique<Quark>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                  w_boson_pz/2, antiparticle, 
-                                                                                  constructor_destructor_status, "Charm", 
-                                                                                  (antiparticle ? "Antired" : "Red"));
-                     std::shared_ptr<Particle> other_quark = std::make_unique<Quark>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                    w_boson_pz/2, !antiparticle, 
-                                                                                    constructor_destructor_status, other_flavour,
-                                                                                    (antiparticle ? "Red" : "Antired"));   
-                     decay_products.push_back(charm_quark);
-                     decay_products.push_back(other_quark);
+                     if(other_flavour == "Down" || other_flavour == "Strange" || other_flavour == "Bottom")
+                     {
+                       std::shared_ptr<Particle> charm_quark = std::make_unique<Quark>(1275, 0, 0, 0, antiparticle, 
+                                                                                       constructor_destructor_status, "Charm", 
+                                                                                       (antiparticle ? "Antired" : "Red"));
+                       std::shared_ptr<Particle> other_quark = std::make_unique<Quark>(Quark::quark_masses[other_flavour], 0, 0, 0,
+                                                                                       !antiparticle, constructor_destructor_status,
+                                                                                       other_flavour, (antiparticle ? "Red" : "Antired"));   
+                       decay_products.push_back(charm_quark);
+                       decay_products.push_back(other_quark);
+                     }
+                     else
+                     {
+                       std::cout<<"Second decay flavour not recognised. "<<std::endl;
+                       decay_flavour = "Unrecognised";
+                     }
                    }
                    else if(decay_flavour != "None")
                    {
@@ -67,44 +79,35 @@ WBoson::WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, doub
                    }
                  }
 
-                 if(decay_type == "Leptonic")
+                 else if(decay_type == "Leptonic")
                  {
+                   std::shared_ptr<Particle> neutrino = std::make_unique<Neutrino>(1, 1, 0, 0, antiparticle, 
+                                                                                     constructor_destructor_status, decay_flavour);
+                   decay_products.push_back(neutrino);
+                   if(decay_flavour == "None") {decay_products.pop_back();}
                    if(decay_flavour == "Electron")
                    {
-                     std::vector<double> energies_deposited{w_boson_energy/2,0,0,0};
-                     std::shared_ptr<Particle> electron = std::make_unique<Electron>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                     w_boson_pz/2, !antiparticle, 
+                     std::vector<double> energies_deposited{0.511,0,0,0};
+                     std::shared_ptr<Particle> electron = std::make_unique<Electron>(0.511, 0, 0, 0, !antiparticle, 
                                                                                      constructor_destructor_status, energies_deposited);
-                     std::shared_ptr<Particle> neutrino = std::make_unique<Neutrino>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                     w_boson_pz/2, antiparticle, 
-                                                                                     constructor_destructor_status, "Electron");
-                     decay_products.push_back(electron);
-                     decay_products.push_back(neutrino);                                                                                     
+                     decay_products.push_back(electron);                                                                                     
                    }
                    else if(decay_flavour == "Muon")
                    {
-                     std::shared_ptr<Particle> muon = std::make_unique<Muon>(w_boson_energy/2, w_boson_px/2, w_boson_py/2, w_boson_pz/2,
-                                                                             !antiparticle, constructor_destructor_status, false);
-                     std::shared_ptr<Particle> neutrino = std::make_unique<Neutrino>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                     w_boson_pz/2, antiparticle, 
-                                                                                     constructor_destructor_status, "Muon");
-                     decay_products.push_back(muon);
-                     decay_products.push_back(neutrino);                                                                                     
+                     std::shared_ptr<Particle> muon = std::make_unique<Muon>(105.7, 0, 0, 0, !antiparticle,
+                                                                             constructor_destructor_status, false);
+                     decay_products.push_back(muon);                                                                                     
                    } 
                    else if(decay_flavour == "Tau")
                    {
-                     std::shared_ptr<Particle> tau = std::make_unique<Tau>(w_boson_energy/2, w_boson_px/2, w_boson_py/2, w_boson_pz/2,
-                                                                           !antiparticle, constructor_destructor_status, "None");
-                     std::shared_ptr<Particle> neutrino = std::make_unique<Neutrino>(w_boson_energy/2, w_boson_px/2, w_boson_py/2,
-                                                                                     w_boson_pz/2, antiparticle, 
-                                                                                     constructor_destructor_status, "Tau");
-                     decay_products.push_back(tau);
-                     decay_products.push_back(neutrino);                                                                                     
+                     std::shared_ptr<Particle> tau = std::make_unique<Tau>(1777, 0, 0, 0, !antiparticle, constructor_destructor_status,
+                                                                           "None");
+                     decay_products.push_back(tau);                                                                                     
                    } 
-                   else if(decay_flavour != "None")
+                   else
                    {
-                     std::cout<<"Decay flavour not valid: must be either Up Down, Up Strange, Up Bottom, Charm Down, Charm Strange, Charm Bottom or None. "<<std::endl;
                      decay_type = "Unrecognised";
+                     decay_products.pop_back();
                    }                                    
                  }
                  else if(decay_type != "None")

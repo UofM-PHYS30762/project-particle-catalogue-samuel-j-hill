@@ -9,6 +9,7 @@
 class Quark: public Particle
 {
   friend class ZBoson;
+  friend class WBoson;
 protected:
   double baryon_number{0.333};
   std::string colour_charge{"Default"};

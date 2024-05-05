@@ -10,9 +10,9 @@ Neutrino::Neutrino(double neutrino_energy, double neutrino_px, double neutrino_p
               try
               {
                 flavour = neutrino_flavour;
-                if(!(flavour == "Electron" || flavour == "electron" || flavour == "Muon" || flavour == "muon" || flavour == "Tau" || flavour == "tau"))
+                if(!(flavour == "Electron" || flavour == "Muon" || flavour == "Tau"))
                 {
-                  throw std::invalid_argument("Flavour must be either Electron/electron, Muon/muon or Tau/tau. ");
+                  throw std::invalid_argument("Flavour must be either Electron, Muon or Tau. ");
                 }
               }
               catch(const std::exception& e)

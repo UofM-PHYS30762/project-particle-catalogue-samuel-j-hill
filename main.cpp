@@ -16,7 +16,7 @@
 
 int main()
 {  
-  ZBoson z_boson_1{91200, 0, 0, 0, false, "Leptonic", "Tau neutrino"};
+  WBoson z_boson_1{80400, 0, 0, 0, false, false, "Leptonic", "Muon"};
   z_boson_1.print_data();
 
   return 0;
