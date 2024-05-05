@@ -26,7 +26,7 @@ WBoson::WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, doub
                  spin = 1;
                  rest_mass = 80400;
                  antiparticle ? charge = -1 : charge = 1;
-                 Particle::check_four_momentum(rest_mass);
+                 check_four_momentum(rest_mass);
                  decay_type = decay_type;
                  decay_flavour = decay_flavour;
 

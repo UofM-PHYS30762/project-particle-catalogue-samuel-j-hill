@@ -17,7 +17,7 @@ Muon::Muon(double muon_energy, double muon_px, double muon_py, double muon_pz, b
               if(print_constructor_destructor) {std::cout<<"Muon parameterised constructor called"<<std::endl;}
               antiparticle ? charge = 1 : charge = -1;
               rest_mass = 105.7;
-              Particle::check_four_momentum(rest_mass);              
+              check_four_momentum(rest_mass);              
           }  
 
 // Overwritten move constructor

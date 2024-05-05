@@ -13,7 +13,7 @@ HiggsBoson::HiggsBoson(double higgs_boson_energy, double higgs_boson_px, double 
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised Higgs boson constructor called. "<<std::endl;}
   rest_mass = 126000;
-  Particle::check_four_momentum(rest_mass);
+  check_four_momentum(rest_mass);
   decay_type = decay_type;
 
   if(decay_type == "Z boson")

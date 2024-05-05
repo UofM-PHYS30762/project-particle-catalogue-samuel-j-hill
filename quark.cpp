@@ -59,7 +59,7 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                }              
                rest_mass = quark_masses[flavour];
                antiparticle ? charge = -quark_charges[flavour] : charge = quark_charges[flavour];
-               Particle::check_four_momentum(rest_mass);
+               check_four_momentum(rest_mass);
              }
 
 // Overwritten move constructor

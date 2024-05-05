@@ -24,7 +24,7 @@ ZBoson::ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, doub
                  if(print_constructor_destructor) {std::cout<<"Parameterised Z boson constructor called. "<<std::endl;}
                  spin = 1;
                  rest_mass = 91200;
-                 Particle::check_four_momentum(rest_mass);
+                 check_four_momentum(rest_mass);
                  decay_type = decay_type;
                  decay_flavour = decay_flavour;
 

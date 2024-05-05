@@ -8,7 +8,7 @@ Gluon::Gluon(double gluon_energy, double gluon_px, double gluon_py, double gluon
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised gluon constructor called"<<std::endl;}
   spin = 1;
-  Particle::check_four_momentum(rest_mass);
+  check_four_momentum(rest_mass);
 };
 
 void Gluon::print_data()

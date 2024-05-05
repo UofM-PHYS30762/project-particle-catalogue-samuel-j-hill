@@ -21,7 +21,7 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            if(print_constructor_destructor) {std::cout<<"Parameterised Tau constructor called. "<<std::endl;}
            antiparticle ? charge = 1 : charge = -1;
            rest_mass = 1777;
-           Particle::check_four_momentum(rest_mass);
+           check_four_momentum(rest_mass);
            decay_type = decay_type;
 
            std::shared_ptr<Particle> tau_neutrino = std::make_shared<Neutrino>(1, 1, 0, 0, antiparticle, 

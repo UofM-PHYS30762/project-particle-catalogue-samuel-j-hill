@@ -22,7 +22,7 @@ Neutrino::Neutrino(double neutrino_energy, double neutrino_px, double neutrino_p
               }
               charge = 0;
               rest_mass = 0;
-              Particle::check_four_momentum(rest_mass);
+              check_four_momentum(rest_mass);
           }  
 
 // Overwritten move constructor

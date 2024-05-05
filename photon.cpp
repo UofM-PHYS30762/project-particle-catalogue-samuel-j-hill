@@ -7,7 +7,7 @@ Photon::Photon(double photon_energy, double photon_px, double photon_py, double 
 {
   if(print_constructor_destructor) {std::cout<<"Parameterised photon constructor called"<<std::endl;}
   spin = 1;
-  Particle::check_four_momentum(rest_mass);
+  check_four_momentum(rest_mass);
 };
 
 void Photon::print_data()
