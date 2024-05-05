@@ -1,6 +1,12 @@
 #include<iostream>
 #include "quark.h"
 
+std::map<std::string,double> Quark::quark_masses = {{"Up", 2.3}, {"Down", 4.8}, {"Charm", 1275},{"Strange", 95},{"Top", 173070},
+                                                    {"Bottom", 4180}};
+
+std::map<std::string,double> Quark::quark_charges = {{"Up", 0.666}, {"Down", -0.333}, {"Charm", 0.666},{"Strange", -0.333},{"Top", 0.666},
+                                                     {"Bottom", -0.333}};
+
 // Default constructor
 Quark::Quark()
 {

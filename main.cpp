@@ -16,8 +16,8 @@
 
 int main()
 {  
-  Tau tau_1{1777,0,0,0,true,false,"Kaon"};
-  tau_1.print_data();
+  ZBoson z_boson_1{91200, 0, 0, 0, false, "Leptonic", "Tau neutrino"};
+  z_boson_1.print_data();
 
   return 0;
 }
