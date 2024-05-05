@@ -24,44 +24,42 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            Particle::check_four_momentum(rest_mass);
            decay_type = decay_type;
 
-           std::shared_ptr<Particle> tau_neutrino = std::make_shared<Neutrino>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
+           std::shared_ptr<Particle> tau_neutrino = std::make_shared<Neutrino>(1, 1, 0, 0, antiparticle, 
                                                                                constructor_destructor_status, "Tau");
            decay_products.push_back(tau_neutrino);
            if(decay_type == "Electron")
            {
-             std::vector<double> calorimeter_energies{tau_energy/3,0,0,0};
-             std::shared_ptr<Particle> electron = std::make_shared<Electron>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
-                                                                           constructor_destructor_status, calorimeter_energies);
-             std::shared_ptr<Particle> electron_neutrino = std::make_shared<Neutrino>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3,
-                                                                                    !antiparticle, constructor_destructor_status, 
-                                                                                    "Electron");
+             std::vector<double> calorimeter_energies{0.511,0,0,0};
+             std::shared_ptr<Particle> electron = std::make_shared<Electron>(0.511, 0, 0, 0, antiparticle, 
+                                                                             constructor_destructor_status, calorimeter_energies);
+             std::shared_ptr<Particle> electron_neutrino = std::make_shared<Neutrino>(1, 1, 0, 0, !antiparticle, 
+                                                                                      constructor_destructor_status, "Electron");
              decay_products.push_back(electron);
              decay_products.push_back(electron_neutrino);
            }
            else if(decay_type == "Muon")
            {
-             std::shared_ptr<Particle> muon = std::make_shared<Muon>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
-                                                                     constructor_destructor_status, false);
-             std::shared_ptr<Particle> muon_neutrino = std::make_shared<Neutrino>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3,
-                                                                                  !antiparticle, constructor_destructor_status, "Muon");
+             std::shared_ptr<Particle> muon = std::make_shared<Muon>(105.7, 0, 0, 0, antiparticle, constructor_destructor_status, false);
+             std::shared_ptr<Particle> muon_neutrino = std::make_shared<Neutrino>(1, 1, 0, 0, !antiparticle, 
+                                                                                  constructor_destructor_status, "Muon");
              decay_products.push_back(muon);
              decay_products.push_back(muon_neutrino);
            }
            else if(decay_type == "Pion")
            {
-             std::shared_ptr<Particle> up_quark = std::make_shared<Quark>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, !antiparticle, 
-                                                                          constructor_destructor_status, "Up", "Red");
-             std::shared_ptr<Particle> down_quark = std::make_shared<Quark>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
-                                                                            constructor_destructor_status, "Down", "Antired");
+             std::shared_ptr<Particle> up_quark = std::make_shared<Quark>(2.3, 0, 0, 0, !antiparticle, constructor_destructor_status,
+                                                                          "Up", (antiparticle ? "Red" : "Antired"));
+             std::shared_ptr<Particle> down_quark = std::make_shared<Quark>(4.8, 0, 0, 0, antiparticle, constructor_destructor_status,
+                                                                            "Down", (antiparticle ? "Antired" : "Red"));
              decay_products.push_back(up_quark);
              decay_products.push_back(down_quark);                                                                              
            }
            else if(decay_type == "Kaon")
            {
-             std::shared_ptr<Particle> up_quark = std::make_shared<Quark>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, !antiparticle, 
-                                                                          constructor_destructor_status, "Up", "Red");
-             std::shared_ptr<Particle> strange_quark = std::make_shared<Quark>(tau_energy/3, tau_px/3, tau_py/3, tau_pz/3, antiparticle, 
-                                                                            constructor_destructor_status, "Strange", "Antired");
+             std::shared_ptr<Particle> up_quark = std::make_shared<Quark>(2.3, 0, 0, 0, !antiparticle, constructor_destructor_status,
+                                                                          "Up", (antiparticle ? "Red" : "Antired"));
+             std::shared_ptr<Particle> strange_quark = std::make_shared<Quark>(95, 0, 0, 0, antiparticle, constructor_destructor_status,
+                                                                               "Strange", (antiparticle ? "Antired" : "Red"));
              decay_products.push_back(up_quark);
              decay_products.push_back(strange_quark);                                                                              
            }
@@ -111,12 +109,7 @@ Tau& Tau::operator=(Tau&& tau)
 void Tau::print_data()
 {
   std::cout<<"Particle type: "<<(antiparticle ? "Antitau" : "Tau")<<std::endl;
-  std::cout<<"Charge = "<<charge<<std::endl;
-  std::cout<<"Spin = "<<spin<<std::endl;
-  std::cout<<"Rest mass = "<<rest_mass<<std::endl;
-  std::cout<<"Four momentum = ["<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[0]<<","<<std::setprecision(3)<<
-  four_momentum->get_four_momentum_vector()[1]<<","<<std::setprecision(3)<<four_momentum->get_four_momentum_vector()[2]<<","<<
-  std::setprecision(3)<<four_momentum->get_four_momentum_vector()[3]<<"]"<<std::endl;
+  Lepton::print_data();
   if(decay_products.size()>0)
   {
     std::cout<<"\nPrinting data of tau decay products\n"<<std::endl;

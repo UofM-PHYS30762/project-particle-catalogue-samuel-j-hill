@@ -16,12 +16,8 @@
 
 int main()
 {  
-  
-  std::vector<double> energies{0.511/2,0.511/2,0,0};
-  std::vector<double> energies_2{0.511/2,0.511/2,9,0};
-  Electron electron_1{0.511,0,0,0,false,false,energies};
-  electron_1.set_calorimeter_deposited_energies(energies_2);
-  std::cout<<electron_1.get_calorimeter_deposited_energies()[2];
+  Tau tau_1{1777,0,0,0,true,false,"Kaon"};
+  tau_1.print_data();
 
   return 0;
 }
