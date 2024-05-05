@@ -16,8 +16,8 @@
 
 int main()
 {  
-  WBoson z_boson_1{80400, 0, 0, 0, false, false, "Leptonic", "Muon"};
-  z_boson_1.print_data();
+  HiggsBoson higgs_boson_1{126000, 0, 0, 0, false, "None"};
+  higgs_boson_1.print_data();
 
   return 0;
 }

@@ -18,33 +18,27 @@ HiggsBoson::HiggsBoson(double higgs_boson_energy, double higgs_boson_px, double 
 
   if(decay_type == "Z boson")
   {
-    std::shared_ptr<Particle> z_boson = std::make_unique<ZBoson>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                                 higgs_boson_pz/2, constructor_destructor_status, "None", "None");
+    std::shared_ptr<Particle> z_boson = std::make_unique<ZBoson>(91200, 0, 0, 0, constructor_destructor_status, "None", "None");
     decay_products.push_back(z_boson);
     decay_products.push_back(z_boson);
   }
   else if(decay_type == "W boson")
   {
-    std::shared_ptr<Particle> w_plus = std::make_unique<WBoson>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                                 higgs_boson_pz/2, false, constructor_destructor_status, "None", "None");
-    std::shared_ptr<Particle> w_minus = std::make_unique<WBoson>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                                 higgs_boson_pz/2, true, constructor_destructor_status, "None", "None");
+    std::shared_ptr<Particle> w_plus = std::make_unique<WBoson>(80400, 0, 0, 0, false, constructor_destructor_status, "None", "None");
+    std::shared_ptr<Particle> w_minus = std::make_unique<WBoson>(80400, 0, 0, 0, true, constructor_destructor_status, "None", "None");
     decay_products.push_back(w_plus);
     decay_products.push_back(w_minus);
   }
   else if(decay_type == "Photon")
   {
-    std::shared_ptr<Particle> photon = std::make_unique<Photon>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                                higgs_boson_pz/2, constructor_destructor_status);
+    std::shared_ptr<Particle> photon = std::make_unique<Photon>(1, 1, 0, 0, constructor_destructor_status);
     decay_products.push_back(photon);
     decay_products.push_back(photon);
   }
   else if(decay_type == "Bottom quark")
   {
-    std::shared_ptr<Particle> bottom = std::make_unique<Quark>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                               higgs_boson_pz/2, false, constructor_destructor_status, "Bottom", "Red");
-    std::shared_ptr<Particle> antibottom = std::make_unique<Quark>(higgs_boson_energy/2, higgs_boson_px/2, higgs_boson_py/2,
-                                                                   higgs_boson_pz/2, true, constructor_destructor_status, "Bottom",
+    std::shared_ptr<Particle> bottom = std::make_unique<Quark>(4180, 0, 0, 0, false, constructor_destructor_status, "Bottom", "Red");
+    std::shared_ptr<Particle> antibottom = std::make_unique<Quark>(4180, 0, 0, 0, true, constructor_destructor_status, "Bottom",
                                                                    "Antired");
     decay_products.push_back(bottom);
     decay_products.push_back(antibottom);   
