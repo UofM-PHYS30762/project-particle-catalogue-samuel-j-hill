@@ -38,6 +38,12 @@ Electron::Electron(double electron_energy, double electron_px, double electron_p
                       antiparticle ? charge = 1 : charge = -1;
                       rest_mass = 0.511;
                       Particle::check_four_momentum(rest_mass);
+                      std::vector<double> rest_four_momentum{0.511, 0, 0, 0};
+                      if(four_momentum->get_four_momentum_vector() == rest_four_momentum) 
+                      {
+                        set_calorimeter_deposited_energies(rest_four_momentum);
+                      }
+
                    } 
 
 // Overwritten move constructor

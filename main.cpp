@@ -16,8 +16,9 @@
 
 int main()
 {  
-  HiggsBoson higgs_boson_1{126000, 0, 0, 0, false, "None"};
-  higgs_boson_1.print_data();
+  std::vector<double> test{0.511, 0, 0, 0};
+  Electron electron_1{0.511, 0, 0, 0, false, false, test}; 
+  electron_1.print_data();
 
   return 0;
 }
