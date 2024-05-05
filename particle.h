@@ -12,12 +12,13 @@
 class Particle
 {
 protected:
-  double charge{0};
-  double spin{0};
-  double rest_mass{0};
+  double charge{0}; // Units of elementary charge
+  double spin{0};  // Units of hbar
+  double rest_mass{0}; // Units of MeV (natural units)
   std::unique_ptr<FourMomentum> four_momentum = std::make_unique<FourMomentum>(0,0,0,0);
   bool antiparticle{false};
-  bool print_constructor_destructor{false}; 
+  bool print_constructor_destructor{false}; // Constructor and destructor print statements are only called if true
+  void check_four_momentum(double particle_rest_mass); // Checks and fixes invariant mass (user cannot set reference rest mass)
 
 public:
   // Default constructor
@@ -45,10 +46,8 @@ public:
   bool get_print_constructor_destructor_status() const {return print_constructor_destructor;}
                         
   void set_four_momentum_vector(double particle_energy, double particle_px, double particle_py, double particle_pz);
-  void set_antiparticle_status(bool antiparticle_status) {antiparticle = antiparticle_status;}
   void set_print_constructor_destructor_status(bool print_constructor_destructor_status) {print_constructor_destructor = print_constructor_destructor_status;}
   
-  void check_four_momentum(double particle_rest_mass);
   virtual void print_data()=0;
 };
 

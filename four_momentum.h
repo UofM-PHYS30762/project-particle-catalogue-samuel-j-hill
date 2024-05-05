@@ -14,7 +14,7 @@ public:
   // Default constructor
   FourMomentum() {};
   // Parameterised constructor
-  FourMomentum(double energy, double p_x, double p_y, double p_z);
+  FourMomentum(double energy, double p_x, double p_y, double p_z) {set_four_momentum_vector(energy, p_x, p_y, p_z);}
   // Destructor 
   ~FourMomentum() {};
     // Copy constructor

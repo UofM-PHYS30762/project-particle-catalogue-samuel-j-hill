@@ -6,6 +6,14 @@
 #include "quark.h"
 #include "higgs_boson.h"
 
+// Default constructor
+HiggsBoson::HiggsBoson()
+{
+  if(print_constructor_destructor) {std::cout<<"Default Higgs boson constructor called"<<std::endl;}
+  rest_mass = 126000;
+  set_four_momentum_vector(rest_mass,0,0,0);
+};
+
 // Parameterised constructor
 HiggsBoson::HiggsBoson(double higgs_boson_energy, double higgs_boson_px, double higgs_boson_py, double higgs_boson_pz,
                        bool constructor_destructor_status, std::string decay_type) : Particle(higgs_boson_energy, higgs_boson_px,

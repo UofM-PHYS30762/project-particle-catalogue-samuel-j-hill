@@ -8,7 +8,7 @@
 
 class Quark: public Particle
 {
-  friend class ZBoson;
+  friend class ZBoson;  // Friend classes to allow access to quark_masses for decay products
   friend class WBoson;
 protected:
   double baryon_number{0.333};
@@ -34,7 +34,7 @@ public:
   // Overwritten move assignment operator
   Quark& operator=(Quark&&);
 
-  double get_quark_number() {return baryon_number;}
+  double get_baryon_number() {return baryon_number;}
   std::string get_colour_charge() {return colour_charge;}
   std::string get_flavour() {return flavour;}
   void print_data();

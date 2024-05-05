@@ -8,9 +8,9 @@
 // Default constructor
 Electron::Electron()
 {
+  if(print_constructor_destructor) {std::cout<<"Default electron constructor called"<<std::endl;}
   rest_mass = 0.511;
   set_four_momentum_vector(rest_mass,0,0,0);
-  if(print_constructor_destructor) {std::cout<<"Default electron constructor called"<<std::endl;}
 }
 
 // Parameterised constructor
@@ -23,7 +23,7 @@ Electron::Electron(double electron_energy, double electron_px, double electron_p
                       {
                         calorimeter_deposited_energies = deposited_energies;
                         if(abs(std::accumulate(calorimeter_deposited_energies.begin(),calorimeter_deposited_energies.end(),0.0) - 
-                           electron_energy) > 0.01 && electron_energy!=0)
+                           electron_energy) > 0.001)
                         {
                           throw std::invalid_argument("Energies deposited in calorimeter must sum to electron energy. ");
                         }
@@ -39,7 +39,7 @@ Electron::Electron(double electron_energy, double electron_px, double electron_p
                       rest_mass = 0.511;
                       check_four_momentum(rest_mass);
                       std::vector<double> rest_four_momentum{0.511, 0, 0, 0};
-                      if(four_momentum->get_four_momentum_vector() == rest_four_momentum) 
+                      if(four_momentum->get_four_momentum_vector() == rest_four_momentum)  
                       {
                         set_calorimeter_deposited_energies(rest_four_momentum);
                       }

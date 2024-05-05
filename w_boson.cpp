@@ -74,7 +74,7 @@ WBoson::WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, doub
                    }
                    else if(decay_flavour != "None")
                    {
-                     std::cout<<"Decay flavour not valid: must be either Up Down, Up Strange, Up Bottom, Charm Down, Charm Strange, Charm Bottom or None. "<<std::endl;
+                     std::cout<<"Invalid flavour: must be either Up Down, Up Strange, Up Bottom, Charm Down, Charm Strange, Charm Bottom or None. "<<std::endl;
                      decay_type = "Unrecognised";
                    }
                  }
@@ -84,6 +84,7 @@ WBoson::WBoson(double w_boson_energy, double w_boson_px, double w_boson_py, doub
                    std::shared_ptr<Particle> neutrino = std::make_unique<Neutrino>(1, 1, 0, 0, antiparticle, 
                                                                                      constructor_destructor_status, decay_flavour);
                    decay_products.push_back(neutrino);
+                   
                    if(decay_flavour == "None") {decay_products.pop_back();}
                    if(decay_flavour == "Electron")
                    {

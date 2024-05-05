@@ -10,7 +10,7 @@ std::map<std::string,double> Quark::quark_charges = {{"Up", 0.666}, {"Down", -0.
 // Default constructor
 Quark::Quark()
 {
-  charge = 0.666;
+  charge = 0.666; // Defaults to up quark
   spin = 0.5;
   rest_mass = 2.3;
   set_four_momentum_vector(rest_mass,0,0,0);
@@ -57,9 +57,8 @@ Quark::Quark(double quark_energy, double quark_px, double quark_py, double quark
                  std::cerr<<e.what()<<std::endl;
                  colour_charge = "Unspecified";
                }              
-               rest_mass = quark_masses[flavour];
                antiparticle ? charge = -quark_charges[flavour] : charge = quark_charges[flavour];
-               if(flavour != "Unspecified") {check_four_momentum(rest_mass);}
+               if(flavour != "Unspecified") {rest_mass = quark_masses[flavour]; check_four_momentum(rest_mass);}
              }
 
 // Overwritten move constructor

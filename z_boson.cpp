@@ -46,22 +46,23 @@ ZBoson::ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, doub
                                                                                      constructor_destructor_status, energies_deposited);
                      std::shared_ptr<Particle> antielectron = std::make_unique<Electron>(0.511, 0, 0, 0, true,
                                                                                          constructor_destructor_status, energies_deposited);  
-                    decay_products.push_back(electron);
-                    decay_products.push_back(antielectron);                                                                                  
+                     decay_products.push_back(electron);
+                     decay_products.push_back(antielectron);                                                                                  
                    }
                    else if(decay_flavour == "Muon")
                    {
                      std::shared_ptr<Particle> muon = std::make_unique<Muon>(105.7, 0, 0, 0, false, constructor_destructor_status, false);
-                     std::shared_ptr<Particle> antimuon = std::make_unique<Muon>(105.7, 0, 0, 0, true, constructor_destructor_status, false);
-                    decay_products.push_back(muon);
-                    decay_products.push_back(antimuon);  
+                     std::shared_ptr<Particle> antimuon = std::make_unique<Muon>(105.7, 0, 0, 0, true, constructor_destructor_status, 
+                                                                                 false);
+                     decay_products.push_back(muon);
+                     decay_products.push_back(antimuon);  
                    }
                    else if(decay_flavour == "Tau")
                    {
                      std::shared_ptr<Particle> tau = std::make_unique<Tau>(1777, 0, 0, 0, false, constructor_destructor_status, "None");
                      std::shared_ptr<Particle> antitau = std::make_unique<Tau>(1777, 0, 0, 0, true, constructor_destructor_status, "None");
-                    decay_products.push_back(tau);
-                    decay_products.push_back(antitau);  
+                     decay_products.push_back(tau);
+                     decay_products.push_back(antitau);  
                    }
                    else if(decay_flavour == "Electron neutrino" || decay_flavour == "Muon neutrino" || decay_flavour == "Tau neutrino")
                    {
@@ -70,8 +71,8 @@ ZBoson::ZBoson(double z_boson_energy, double z_boson_px, double z_boson_py, doub
                                                                                      neutrino_flavour);
                      std::shared_ptr<Particle> antineutrino = std::make_unique<Neutrino>(1, 1, 0, 0, true, constructor_destructor_status,
                                                                                          neutrino_flavour);
-                    decay_products.push_back(neutrino);
-                    decay_products.push_back(antineutrino);
+                     decay_products.push_back(neutrino);
+                     decay_products.push_back(antineutrino);
                    }
                    else
                    {

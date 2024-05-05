@@ -16,7 +16,7 @@
 
 int main()
 {  
-  Muon test{1, 0, 0, 0, false, false, false};
+  Tau test{1777, 0, 0, 0, false, false, "Nonek"};
   test.print_data();
 
   return 0;

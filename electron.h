@@ -8,7 +8,7 @@
 class Electron: public Lepton
 {
 private:
-  std::vector<double> calorimeter_deposited_energies{0.511,0,0,0};
+  std::vector<double> calorimeter_deposited_energies{0.511,0,0,0}; // Units MeV
 
 public:
   // Default constructor

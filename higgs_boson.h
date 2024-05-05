@@ -14,7 +14,7 @@ private:
 
 public:
   // Default constructor
-  HiggsBoson() {rest_mass = 126000; set_four_momentum_vector(rest_mass,0,0,0); if(print_constructor_destructor) {std::cout<<"Default Higgs boson constructor called"<<std::endl;}};
+  HiggsBoson();
   // Parameterised constructor
   HiggsBoson(double higgs_boson_energy, double higgs_boson_px, double higgs_boson_py, double higgs_boson_pz,
              bool constructor_destructor_status, std::string decay_type);

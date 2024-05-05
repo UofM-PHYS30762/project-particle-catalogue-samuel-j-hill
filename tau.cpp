@@ -27,7 +27,8 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            std::shared_ptr<Particle> tau_neutrino = std::make_shared<Neutrino>(1, 1, 0, 0, antiparticle, 
                                                                                constructor_destructor_status, "Tau");
            decay_products.push_back(tau_neutrino);
-           if(decay_type == "Electron")
+           if(decay_type == "None") {decay_products.pop_back();}
+           else if(decay_type == "Electron")
            {
              std::vector<double> calorimeter_energies{0.511,0,0,0};
              std::shared_ptr<Particle> electron = std::make_shared<Electron>(0.511, 0, 0, 0, antiparticle, 
@@ -65,12 +66,9 @@ Tau::Tau(double tau_energy, double tau_px, double tau_py, double tau_pz, bool an
            }
            else 
            {
-             if(decay_type != "None")
-             {
-               std::cout<<"Decay type not recognised: must be either Electron, Muon, Pion or Kaon "<<std::endl;
-               decay_type = "Unrecognised";
-             }
-             decay_products.pop_back(); // Other decay products cannot be created so neutrino is removed so that the vector is empty
+             std::cout<<"Decay type not recognised: must be either Electron, Muon, Pion, Kaon or None. "<<std::endl;
+             decay_type = "Unrecognised";
+             decay_products.pop_back(); // Other decay products cannot be created so neutrino is removed to empty decay_products
            }
          }
 
