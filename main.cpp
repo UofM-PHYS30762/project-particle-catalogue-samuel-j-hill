@@ -16,9 +16,8 @@
 
 int main()
 {  
-  std::vector<double> test{0.511, 0, 0, 0};
-  Electron electron_1{0.511, 0, 0, 0, false, false, test}; 
-  electron_1.print_data();
+  Muon test{1, 0, 0, 0, false, false, false};
+  test.print_data();
 
   return 0;
 }

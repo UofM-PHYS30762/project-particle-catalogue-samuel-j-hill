@@ -82,7 +82,7 @@ void Particle::check_four_momentum(double particle_rest_mass)
 {
   try
   {
-    if(abs((*four_momentum).get_invariant_mass()) - particle_rest_mass > 0.00001)
+    if(abs((*four_momentum).get_invariant_mass() - particle_rest_mass) > 0.00001)
     {
       throw std::invalid_argument("Four momentum invariant mass must be equal to the rest mass. ");
     } 
