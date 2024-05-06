@@ -12,7 +12,7 @@ private:
 
 public:
   // Default constructor
-  Neutrino() {charge = 0; if(print_constructor_destructor) {std::cout<<"Default neutrino constructor called"<<std::endl;}}
+  Neutrino();
   // Parameterised constructor
   Neutrino(double neutrino_energy, double neutrino_px, double neutrino_py, double neutrino_pz, bool antiparticle, 
            bool constructor_destructor_status, std::string neutrino_flavour);

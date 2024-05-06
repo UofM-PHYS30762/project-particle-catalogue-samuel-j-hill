@@ -8,7 +8,7 @@ class Photon: public Particle
 {
 public:
   // Default constructor
-  Photon() : Particle() {spin = 1; if(print_constructor_destructor) {std::cout<<"Default photon constructor called"<<std::endl;}};
+  Photon();
   // Parameterised constructor
   Photon(double photon_energy, double photon_px, double photon_py, double photon_pz, bool constructor_destructor_status);
   // Destructor

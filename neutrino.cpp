@@ -1,6 +1,14 @@
 #include<iostream>
 #include "neutrino.h"
 
+// Default constructor
+Neutrino::Neutrino()
+{
+  if(print_constructor_destructor) {std::cout<<"Default neutrino constructor called"<<std::endl;}
+  charge = 0; 
+  set_four_momentum_vector(1,1,0,0);
+}
+
 // Parameterised constructor
 Neutrino::Neutrino(double neutrino_energy, double neutrino_px, double neutrino_py, double neutrino_pz, bool antiparticle,
                    bool constructor_destructor_status, std::string neutrino_flavour) : 

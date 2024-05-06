@@ -1,6 +1,14 @@
 #include <iostream>
 #include "gluon.h"
 
+// Default constructor
+Gluon::Gluon() : Particle() 
+{
+  if(print_constructor_destructor){std::cout<<"Default gluon constructor called"<<std::endl;}
+  spin = 1; 
+  set_four_momentum_vector(1,1,0,0);
+}
+
 // Parameterised constructor
 Gluon::Gluon(double gluon_energy, double gluon_px, double gluon_py, double gluon_pz, bool antiparticle_status,
              bool constructor_destructor_status) : Particle(gluon_energy, gluon_px, gluon_py, gluon_pz, antiparticle_status,

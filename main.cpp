@@ -16,16 +16,30 @@
 
 int main()
 {  
-  std::unique_ptr<Particle> muon_1 = std::make_unique<Muon>(105.7,0,0,0,true,false,false);
-  std::unique_ptr<Particle> muon_2 = std::make_unique<Muon>(105.7,0,0,0,false,false,false);
-  std::unique_ptr<Particle> quark = std::make_unique<Quark>(2.3,0,0,0,false,false,"Up","Red");
-  ParticleCatalogue catalogue_1;
-  catalogue_1.add_particle(std::move(muon_1));
-  catalogue_1.add_particle(std::move(muon_2));
-  catalogue_1.add_particle(std::move(quark));
-  catalogue_1.print_catalogue();
-  FourMomentum total = catalogue_1.get_total_four_momentum();
-  std::cout<<total.get_four_momentum_vector()[1];
+  ParticleCatalogue catalogue;
+
+  std::unique_ptr<Particle> electron = std::make_unique<Electron>();
+  catalogue.add_particle(std::move(electron));
+  std::unique_ptr<Particle> gluon = std::make_unique<Gluon>();
+  catalogue.add_particle(std::move(gluon));
+  std::unique_ptr<Particle> higgs = std::make_unique<HiggsBoson>();
+  catalogue.add_particle(std::move(higgs));
+  std::unique_ptr<Particle> muon = std::make_unique<Muon>();
+  catalogue.add_particle(std::move(muon));
+  std::unique_ptr<Particle> neutrino = std::make_unique<Neutrino>();
+  catalogue.add_particle(std::move(neutrino));
+  std::unique_ptr<Particle> photon = std::make_unique<Photon>();
+  catalogue.add_particle(std::move(photon));
+  std::unique_ptr<Particle> quark = std::make_unique<Quark>();
+  catalogue.add_particle(std::move(quark));
+  std::unique_ptr<Particle> tau = std::make_unique<Tau>();
+  catalogue.add_particle(std::move(tau));
+  std::unique_ptr<Particle> w_boson = std::make_unique<WBoson>();
+  catalogue.add_particle(std::move(w_boson));
+  std::unique_ptr<Particle> z_boson = std::make_unique<ZBoson>();
+  catalogue.add_particle(std::move(z_boson));
+
+  catalogue.print_catalogue();
 
   return 0;
 }

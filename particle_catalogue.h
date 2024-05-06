@@ -31,21 +31,21 @@ public:
   ~ParticleCatalogue() {std::cout<<"Particle catalogue destructor called"<<std::endl;}
 
   particle_catalogue get_particle_catalogue() {return catalogue;}
-  template <class c_type> ParticleCatalogue get_subcatalogue(); // Returns subcatalogue containing all particles of type c_type
+  template <class c_type> ParticleCatalogue get_subcatalogue(bool antiparticle_status); // Returns subcatalogue containing all particles of type c_type
   int get_total_number_of_entries() {return catalogue.size();}
-  template <class c_type> int get_number_of_entries_of_type();
+  template <class c_type> int get_number_of_entries_of_type(bool antiparticle_status);
   FourMomentum get_total_four_momentum();
   void add_particle(std::shared_ptr<Particle> particle) {catalogue.insert(std::move(particle));}
   void print_catalogue();
 };
 
-template <class c_type> int ParticleCatalogue::get_number_of_entries_of_type()
+template <class c_type> int ParticleCatalogue::get_number_of_entries_of_type(bool antiparticle_status)
 {
   int counter = 0;
   for(auto i = catalogue.begin(); i != catalogue.end(); i++)
   {
     std::shared_ptr<c_type> derived_pointer = std::dynamic_pointer_cast<c_type>(*i); // will default to nullptr if typeid(*i) != c_type
-    if(derived_pointer != nullptr)
+    if(derived_pointer != nullptr && antiparticle_status == (*i)->get_antiparticle_status())
     {
       counter += 1;
     }
@@ -54,13 +54,13 @@ template <class c_type> int ParticleCatalogue::get_number_of_entries_of_type()
   return counter;
 }
 
-template <class c_type> ParticleCatalogue ParticleCatalogue::get_subcatalogue()
+template <class c_type> ParticleCatalogue ParticleCatalogue::get_subcatalogue(bool antiparticle_status)
 {
   ParticleCatalogue subcatalogue;
   for(auto i = catalogue.begin(); i != catalogue.end(); i++)
   {
     std::shared_ptr<c_type> derived_pointer = std::dynamic_pointer_cast<c_type>(*i);
-    if(derived_pointer != nullptr)
+    if(derived_pointer != nullptr && antiparticle_status == (*i)->get_antiparticle_status())
     {
       subcatalogue.add_particle(*i);
     }

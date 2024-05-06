@@ -1,6 +1,14 @@
 #include <iostream>
 #include "photon.h"
 
+// Default constructor
+Photon::Photon() : Particle() 
+{
+  if(print_constructor_destructor) {std::cout<<"Default photon constructor called"<<std::endl;}
+  spin = 1; 
+  set_four_momentum_vector(1,1,0,0);  
+};
+
 // Parameterised constructor
 Photon::Photon(double photon_energy, double photon_px, double photon_py, double photon_pz, bool constructor_destructor_status) : 
                Particle(photon_energy, photon_px, photon_py, photon_pz, false, constructor_destructor_status)
