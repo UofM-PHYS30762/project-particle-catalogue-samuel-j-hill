@@ -26,8 +26,8 @@ public:
   // Move assignment operator
   FourMomentum& operator=(FourMomentum&& other_four_momentum) {std::swap(four_momentum_vector, other_four_momentum.four_momentum_vector);
                                                                return *this;}
-  std::vector<double> operator+(FourMomentum& other_four_momentum);
-  std::vector<double> operator-(FourMomentum& four_momentum);
+  FourMomentum operator+(FourMomentum& other_four_momentum);
+  FourMomentum operator-(FourMomentum& other_four_momentum);
   friend double dot_product(FourMomentum& four_momentum_1, FourMomentum& four_momentum_2);
 
   std::vector<double> get_four_momentum_vector() {return four_momentum_vector;}

@@ -17,24 +17,28 @@ FourMomentum& FourMomentum::operator=(FourMomentum &other_four_momentum)
   return *this;
 }
 
-std::vector<double> FourMomentum::operator+(FourMomentum& other_four_momentum)
+FourMomentum FourMomentum::operator+(FourMomentum& other_four_momentum)
 {
-  std::vector<double> summed_four_momentum;
+  std::vector<double> summed_four_momentum_vector;
   for(int i = 0; i < 4; i++)
   {
-    summed_four_momentum.push_back(four_momentum_vector[i] + (other_four_momentum.four_momentum_vector)[i]);
+    summed_four_momentum_vector.push_back(four_momentum_vector[i] + (other_four_momentum.four_momentum_vector)[i]);
   }
+  FourMomentum summed_four_momentum{summed_four_momentum_vector[0], summed_four_momentum_vector[1], summed_four_momentum_vector[2],
+                                    summed_four_momentum_vector[3]};
   
   return summed_four_momentum;
 }
 
-std::vector<double> FourMomentum::operator-(FourMomentum& other_four_momentum)
+FourMomentum FourMomentum::operator-(FourMomentum& other_four_momentum)
 {
-  std::vector<double> subtracted_four_momentum;
+  std::vector<double> subtracted_four_momentum_vector;
   for(int i = 0; i < 4; i++)
   {
-    subtracted_four_momentum.push_back(four_momentum_vector[i] + (other_four_momentum.four_momentum_vector)[i]);
+    subtracted_four_momentum_vector.push_back(four_momentum_vector[i] - (other_four_momentum.four_momentum_vector)[i]);
   }
+  FourMomentum subtracted_four_momentum{subtracted_four_momentum_vector[0], subtracted_four_momentum_vector[1], 
+                                    subtracted_four_momentum_vector[2], subtracted_four_momentum_vector[3]};
   
   return subtracted_four_momentum;
 }
