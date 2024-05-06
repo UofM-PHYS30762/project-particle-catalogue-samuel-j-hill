@@ -44,8 +44,8 @@ template <class c_type> int ParticleCatalogue::get_number_of_entries_of_type()
   int counter = 0;
   for(auto i = catalogue.begin(); i != catalogue.end(); i++)
   {
-    std::shared_ptr<c_type> derived_ptr = std::dynamic_pointer_cast<c_type>(*i); // will default to nullptr if typeid(*i) != c_type
-    if(derived_ptr != nullptr)
+    std::shared_ptr<c_type> derived_pointer = std::dynamic_pointer_cast<c_type>(*i); // will default to nullptr if typeid(*i) != c_type
+    if(derived_pointer != nullptr)
     {
       counter += 1;
     }
@@ -59,8 +59,8 @@ template <class c_type> ParticleCatalogue ParticleCatalogue::get_subcatalogue()
   ParticleCatalogue subcatalogue;
   for(auto i = catalogue.begin(); i != catalogue.end(); i++)
   {
-    std::shared_ptr<c_type> derived_ptr = std::dynamic_pointer_cast<c_type>(*i);
-    if(derived_ptr != nullptr)
+    std::shared_ptr<c_type> derived_pointer = std::dynamic_pointer_cast<c_type>(*i);
+    if(derived_pointer != nullptr)
     {
       subcatalogue.add_particle(*i);
     }
