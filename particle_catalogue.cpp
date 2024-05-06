@@ -49,4 +49,10 @@ void ParticleCatalogue::print_catalogue()
   <<get_number_of_entries_of_type<WBoson>(true)<<" W- boson(s)\n"
   <<get_number_of_entries_of_type<ZBoson>(false)<<" Z boson(s)\n"
   <<get_number_of_entries_of_type<HiggsBoson>(false)<<" Higgs boson(s)\n"<<std::endl;
+  
+  std::cout<<"Total four momentum of the particles in the catalogue = ["<<std::setprecision(3)
+  <<(get_total_four_momentum()).get_four_momentum_vector()[0]<<","<<std::setprecision(3)
+  <<(get_total_four_momentum()).get_four_momentum_vector()[1]<<","<<std::setprecision(3)
+  <<(get_total_four_momentum()).get_four_momentum_vector()[2]<<","<<std::setprecision(3)
+  <<(get_total_four_momentum()).get_four_momentum_vector()[3]<<"]"<<std::endl;
 }

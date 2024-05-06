@@ -23,9 +23,9 @@ int main()
   catalogue.add_particle(std::move(electron));
   std::unique_ptr<Particle> antielectron = std::make_unique<Electron>(0.511, 0, 0, 0, true, false, deposited_energies);
   catalogue.add_particle(std::move(antielectron));
-  std::unique_ptr<Particle> gluon = std::make_unique<Gluon>(1, 1, 0, 0, false, false);
+  std::unique_ptr<Particle> gluon = std::make_unique<Gluon>(1, 1, 0, 0, false, false, "Blue", "Antired");
   catalogue.add_particle(std::move(gluon));
-  std::unique_ptr<Particle> antigluon = std::make_unique<Gluon>(1, 1, 0, 0, true, false);
+  std::unique_ptr<Particle> antigluon = std::make_unique<Gluon>(1, 1, 0, 0, true, false, "Antigreen", "Blue");
   catalogue.add_particle(std::move(antigluon));
   std::unique_ptr<Particle> higgs = std::make_unique<HiggsBoson>(126000, 0, 0, 0, false, "W boson");
   catalogue.add_particle(std::move(higgs));
@@ -79,7 +79,7 @@ int main()
   catalogue.add_particle(std::move(w_plus_boson));
   std::unique_ptr<Particle> w_minus_boson = std::make_unique<WBoson>(80400, 0, 0, 0, true, false, "Leptonic", "Muon");
   catalogue.add_particle(std::move(w_minus_boson));
-  std::unique_ptr<Particle> z_boson = std::make_unique<ZBoson>(91200, 0, 0, 0, false, "Hadronic", "Top");
+  std::unique_ptr<Particle> z_boson = std::make_unique<ZBoson>(-100, 0, 0, 0, false, "Hadronic", "Top"); // Invalid inputs
   catalogue.add_particle(std::move(z_boson));
 
   catalogue.print_catalogue();
