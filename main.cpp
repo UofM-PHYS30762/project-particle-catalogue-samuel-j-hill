@@ -1,3 +1,7 @@
+// PHYS 30762 Programming in C++
+// Samuel Hill, Final project, 07/05/2024
+// Creates a catalogue containing one of each particle in the standard model
+
 #include<iostream>
 #include "four_momentum.h"
 #include "particle.h"
